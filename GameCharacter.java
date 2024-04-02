@@ -56,8 +56,8 @@ public class GameCharacter {
         this.characterStrength = 30;
         this.characterDefense = 10;
         this.level = level;
-        image2 = new int[][][] {};
-        image1 = new int[][][] {};
+        this.image2 = new int[][][] {};
+        this.image1 = new int[][][] {};
 
     }
 
@@ -67,15 +67,11 @@ public class GameCharacter {
     }
 
     public void draw1() {
-
         DisplayManager.printCharacter_RGB(image1, initY, initX);
-
     }
 
     public void draw2() {
-
         DisplayManager.printCharacter_RGB(image2, initY, initX);
-
     }
 
     public void eraseFromScreen() {
@@ -83,7 +79,6 @@ public class GameCharacter {
     }
 
     public void updatePosition(int x, int y) {
-        // DisplayManager.cleanArea_RGB(40, 25, initY, initX);
         eraseFromScreen();
         initX = x;
         initY = y;
