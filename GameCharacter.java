@@ -28,6 +28,7 @@ public class GameCharacter {
     private int[][][] image2;
 
     private int[] level;
+    private static  String defaultDataArrayFolder="arrayData/";
 
     public GameCharacter(int initX, int initY, String fileName1, String fileName2) {
 
@@ -98,7 +99,7 @@ public class GameCharacter {
 
     public static void saveArrayIntoFile(String fileName, int[][][] array) {
         try {
-            FileWriter output = new FileWriter(fileName);
+            FileWriter output = new FileWriter(GameCharacter.defaultDataArrayFolder+fileName);
 
             for (int i = 0; i < array.length; i++) {
                 for (int j = 0; j < array[0].length; j++) {
@@ -123,8 +124,9 @@ public class GameCharacter {
 
     private static int[][][] readFileIntoArray(String fileName) {
 
+        String filePath=GameCharacter.defaultDataArrayFolder+fileName;
         try {
-            FileReader input = new FileReader(fileName);
+            FileReader input = new FileReader(filePath);
             int cx = -1;
             int lengthContent = 0;
             do {
@@ -135,7 +137,7 @@ public class GameCharacter {
             input.close();
 
             char[] contentFile = new char[lengthContent];
-            input = new FileReader(fileName);
+            input = new FileReader(filePath);
             input.read(contentFile);
             input.close();
             int totalLines = 0;
