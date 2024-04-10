@@ -6,15 +6,20 @@ public class GameRun {
         static Scanner scanner = new Scanner(System.in);
         static Random random = new Random();
 
-        static GameCharacter hero = new GameCharacter("hero1_hero_frame1_RGB.txt", "hero1_hero_frame2_RGB.txt");
+        static GameCharacter hero = new GameCharacter("hero1_hero_frame1_RGB.txt", "hero1_hero_frame2_RGB.txt",
+                        "hero1_hero_frame3_RGB.txt", "hero1_hero_frame4_RGB.txt");
         static GameCharacter mosnter1 = new GameCharacter("CIC Wolf", "monster1_monster_frame1_RGB.txt",
-                        "monster1_monster_frame2_RGB.txt");
+                        "monster1_monster_frame2_RGB.txt", "monster1_monster_frame3_RGB.txt",
+                        "monster1_monster_frame3_RGB.txt");
         static GameCharacter mosnter2 = new GameCharacter("IRCC Imigration", "monster2_monster_frame1_RGB.txt",
-                        "monster2_monster_frame2_RGB.txt");
+                        "monster2_monster_frame2_RGB.txt", "monster2_monster_frame3_RGB.txt",
+                        "monster2_monster_frame3_RGB.txt");
         static GameCharacter mosnter3 = new GameCharacter("Big Heade from College", "monster3_monster_frame1_RGB.txt",
-                        "monster3_monster_frame2_RGB.txt");
+                        "monster3_monster_frame2_RGB.txt", "monster3_monster_frame3_RGB.txt",
+                        "monster3_monster_frame3_RGB.txt");
         static GameCharacter mosnter4 = new GameCharacter("Canadian Citzenship", "monster4_monster_frame1_RGB.txt",
-                        "monster4_monster_frame2_RGB.txt");
+                        "monster4_monster_frame2_RGB.txt", "monster4_monster_frame3_RGB.txt",
+                        "monster4_monster_frame3_RGB.txt");
 
         static GameCharacter[] monstersSlashLevels = { mosnter1, mosnter2, mosnter3, mosnter4, mosnter1, mosnter2 };
 
@@ -78,63 +83,90 @@ public class GameRun {
 
                         } else {
 
-                                msg = DisplayManager.messageBox(
-                                                "Your journey begins now," + hero.getCharacterName() + "!" +
-                                                                "\nAs you step onto the path of trials, your resolve to become\n a Canadian citizen will be tested."
-                                                                +
-                                                                "\nAhead lies your first challenge, It's time to prove your strength.\n\nCIC Wolf stands in your way",
-                                                DisplayManager.height / 2, DisplayManager.width / 2);
-                                anwser = "";
-                                anwser += scanner.nextLine();
-                                msg.clean();
-
                                 GameCharacter imigrante = GameRun.hero;
                                 GameCharacter monster;
                                 int level = 0;
 
                                 boolean timeToHeroPlay = true;
+                                int heroPositionY = 60 - 40;
+                                int heroPositionX = 30;
+                                int monsterPositionY = 10;
+                                int monsterPositionX = 150;
+
                                 while (level < monstersSlashLevels.length) {
+                                        monster = GameRun.monstersSlashLevels[level];
+                                        msg = DisplayManager.messageBox(
+                                                        "Battle " + String.valueOf(level + 1) + "/"
+                                                                        + String.valueOf(
+                                                                                        monstersSlashLevels.length),
+                                                        4,
+                                                        DisplayManager.width / 2);
+                                        imigrante.updatePosition(heroPositionX, heroPositionY);
+                                        monster.updatePosition(monsterPositionX, monsterPositionY);
+
+                                        msg = DisplayManager.messageBox(
+                                                        "Your journey begins now," + hero.getCharacterName() + "!" +
+                                                                        "\nAs you step onto the path of trials, your resolve to become\n a Canadian citizen will be tested."
+                                                                        +
+                                                                        "\nAhead lies your first challenge, It's time to prove your strength.\n\nCIC Wolf stands in your way",
+                                                        DisplayManager.height / 2, (DisplayManager.width / 2) - 35);
+
+                                        anwser += scanner.nextLine();
+                                        msg.clean();
+
                                         do {
-                                                monster = GameRun.monstersSlashLevels[level];
-
-                                                msg = DisplayManager.messageBox(
-                                                                "Battle " + String.valueOf(level + 1) + "/"
-                                                                                + String.valueOf(
-                                                                                                monstersSlashLevels.length),
-                                                                4,
-                                                                DisplayManager.width / 2);
-
-                                                imigrante.updatePosition(50, 60 - 40);
-                                                monster.updatePosition(150, 10);
 
                                                 if (timeToHeroPlay) {
-                                                        imigrante.decreaseLife(random.nextInt(0,
-                                                                        monster.getCharacterAttack()));
 
                                                         msg = DisplayManager.messageBox(
                                                                         "Press enter to " + imigrante.getCharacterName()
                                                                                         + " Play",
                                                                         20,
                                                                         (DisplayManager.width / 2) - 10);
+
                                                 } else {
-                                                        monster.decreaseLife(random.nextInt(0,
-                                                                        imigrante.getCharacterAttack()));
 
                                                         msg = DisplayManager.messageBox(
                                                                         "Press enter to " + monster.getCharacterName()
                                                                                         + " Play",
                                                                         20,
                                                                         (DisplayManager.width / 2) - 10);
+
                                                 }
+                                                anwser = "";
+                                                anwser += scanner.nextLine();
+
+                                                if (timeToHeroPlay) {
+
+                                                        monster.decreaseLife(random.nextInt(0,
+                                                                        imigrante.getCharacterAttack()));
+                                                } else {
+
+                                                        imigrante.decreaseLife(random.nextInt(0,
+                                                                        monster.getCharacterAttack()));
+                                                }
+
+                                                imigrante.updatePosition(heroPositionX, heroPositionY);
+                                                monster.updatePosition(monsterPositionX, monsterPositionY);
 
                                                 timeToHeroPlay = !timeToHeroPlay;
 
-                                                anwser = "";
-                                                anwser += scanner.nextLine();
                                                 msg.clean();
 
                                         } while (monster.getCharacterLife() > 0 && imigrante.getCharacterLife() > 0);
+                                        // change of level or game orver
+                                        if (imigrante.getCharacterLife() > 0) {
+                                                imigrante.updateWinningPosition();
+                                        } else {
+                                                msg = DisplayManager.messageBox(
+                                                                "GAME OVER",
+                                                                20,
+                                                                (DisplayManager.width / 2) - 10);
 
+                                        }
+                                        timeToHeroPlay = true;
+                                        anwser = "";
+                                        anwser += scanner.nextLine();
                                         level++;
                                 }
 

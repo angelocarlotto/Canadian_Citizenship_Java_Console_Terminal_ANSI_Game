@@ -31,31 +31,39 @@ public class GameCharacter {
 
     private int characterDefense;
 
-
     private int initX;
 
     private int initY;
     private String fileName1;
     private String fileName2;
+    private String fileName3;
+    private String fileName4;
+
     private int[][][] image1;
     private int[][][] image2;
+    private int[][][] image3Defeated;
+    private int[][][] image4Won;
 
     private static String defaultDataArrayFolder = "arrayData/";
 
-    public GameCharacter( String fileName1, String fileName2) {
-        this("", fileName1, fileName2);
+    public GameCharacter(String fileName1, String fileName2, String fileName3,String fileName4) {
+        this("", fileName1, fileName2, fileName3,fileName4);
     }
 
-    public GameCharacter(String characterName,String fileName1, String fileName2) {
+    public GameCharacter(String characterName, String fileName1, String fileName2, String fileName3,String fileName4) {
 
         this.fileName1 = fileName1;
         this.fileName2 = fileName2;
+        this.fileName3 = fileName3;
+        this.fileName4 = fileName4;
         this.characterName = characterName;
-        this.characterLife = 100;
+        this.characterLife = 50;
         this.characterAttack = 20;
         this.characterDefense = 8;
-        this.image2 = new int[][][] {};
         this.image1 = new int[][][] {};
+        this.image2 = new int[][][] {};
+        this.image3Defeated = new int[][][] {};
+        this.image4Won = new int[][][] {};
 
     }
 
@@ -86,6 +94,8 @@ public class GameCharacter {
     public void loadImagesCharacter() {
         this.image1 = GameCharacter.readFileIntoArray(fileName1);
         this.image2 = GameCharacter.readFileIntoArray(fileName2);
+        this.image3Defeated = GameCharacter.readFileIntoArray(fileName3);
+        this.image4Won = GameCharacter.readFileIntoArray(fileName4);
     }
 
     public void drawCharacter1OnTheScreen(int x, int y) {
@@ -99,11 +109,17 @@ public class GameCharacter {
         characterLife += loseLife > 0 ? 0 : loseLife;
     }
 
-    public void drawCharacter1OnTheScreen() {
-        Random x = new Random();
-        int[][][] randomArray = x.nextBoolean() ? image1 : image2;
+    public void drawCharacter1OnTheScreen(int[][][] randomArray){
+
         DisplayManager.printCharacter_RGB(randomArray, initY, initX);
-        DisplayManager.printAtPosition(getCharacterName() + ":("+String.valueOf(characterLife) +")"+ "#".repeat(this.characterLife / 10), initX, initY);
+        DisplayManager.printAtPosition(
+                getCharacterName() + ":(" + String.valueOf(characterLife) + ")" + "#".repeat(this.characterLife / 10),
+                initX, initY);
+    }
+    public void drawCharacter1OnTheScreen() {
+        Random randomAux = new Random();
+        int[][][] randomArray = characterLife <= 0 ? image3Defeated : randomAux.nextBoolean() ? image1 : image2;
+        drawCharacter1OnTheScreen(randomArray);
     }
 
     public void eraseCharacterFromScreen() {
@@ -115,6 +131,12 @@ public class GameCharacter {
         initX = x;
         initY = y;
         drawCharacter1OnTheScreen();
+
+    }
+
+    public void updateWinningPosition() {
+        eraseCharacterFromScreen();
+        drawCharacter1OnTheScreen(image4Won);
 
     }
 

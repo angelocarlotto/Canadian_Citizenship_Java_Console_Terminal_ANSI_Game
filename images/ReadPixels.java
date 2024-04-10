@@ -2,14 +2,48 @@ package images;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
+import old.Hero;
+import old.Monster1;
+import old.Monster2;
+import old.Monster3;
+import old.Monster4;
+
 public class ReadPixels {
 
+    public static void saveArrayDataIntoFile(String fileName, int[][][] array) {
+        try {
+            FileWriter output = new FileWriter(fileName);
+
+            for (int i = 0; i < array.length; i++) {
+                for (int j = 0; j < array[0].length; j++) {
+                    output.write("");
+                    output.write(String.valueOf(array[i][j][0]) + ", ");
+                    output.write(String.valueOf(array[i][j][1]) + ", ");
+                    output.write(String.valueOf(array[i][j][2]) + ", ");
+                    output.write(String.valueOf(array[i][j][3]) + ", ");
+                    output.write(String.valueOf(array[i][j][4]));
+                    if (j == array[0].length - 1)
+                        output.write(" ");
+                    else
+                        output.write("# ");
+                }
+                output.write("\n");
+            }
+            output.close();
+        } catch (Exception e) {
+            e.getStackTrace();
+        }
+    }
     public static void main(String[] args) throws IOException {
+        ReadPixels.saveArrayDataIntoFile("hero1_hero_frame4_RGB.txt",Hero.hero_frame4_RGB);
+    }
+    public static void main44(String[] args) throws IOException {
         // Specify the path to your PNG image file
-        String filePath = "images/monster4_1.png";
+        String filePath = "images/hero1_4.png";
 
         // Read the image
         BufferedImage image = ImageIO.read(new File(filePath));
