@@ -9,15 +9,28 @@ Time: 9:30PM
 
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.util.Random;
 
 public class GameCharacter {
 
     private String characterName;
+
     private String country;
 
     private int characterLife;
-    private int characterStrength;
+
+    public int getCharacterLife() {
+        return characterLife;
+    }
+
+    public void setCharacterLife(int characterLife) {
+        this.characterLife = characterLife;
+    }
+
+    private int characterAttack;
+
     private int characterDefense;
+
 
     private int initX;
 
@@ -27,38 +40,47 @@ public class GameCharacter {
     private int[][][] image1;
     private int[][][] image2;
 
-    private int[] level;
-    private static  String defaultDataArrayFolder="arrayData/";
+    private static String defaultDataArrayFolder = "arrayData/";
 
-    public GameCharacter(int initX, int initY, String fileName1, String fileName2) {
-
-        this.initX = initX;
-        this.initY = initY;
-        this.fileName1 = fileName1;
-        this.fileName2 = fileName2;
-        this.characterLife = 100;
-        this.characterStrength = 30;
-        this.characterDefense = 10;
-        this.level = new int[] {};
-        image2 = new int[][][] {};
-        image1 = new int[][][] {};
-
+    public GameCharacter( String fileName1, String fileName2) {
+        this("", fileName1, fileName2);
     }
 
-    public GameCharacter(String characterName, int initX, int initY, String fileName1, String fileName2, int[] level) {
+    public GameCharacter(String characterName,String fileName1, String fileName2) {
 
-        this.initX = initX;
-        this.initY = initY;
         this.fileName1 = fileName1;
         this.fileName2 = fileName2;
         this.characterName = characterName;
         this.characterLife = 100;
-        this.characterStrength = 30;
-        this.characterDefense = 10;
-        this.level = level;
+        this.characterAttack = 20;
+        this.characterDefense = 8;
         this.image2 = new int[][][] {};
         this.image1 = new int[][][] {};
 
+    }
+
+    public String getCharacterName() {
+        return "\033[31m" + characterName + "\033[0m";
+    }
+
+    public void setCharacterName(String characterName) {
+        this.characterName = characterName;
+    }
+
+    public int getCharacterAttack() {
+        return characterAttack;
+    }
+
+    public void setCharacterAttack(int characterAttack) {
+        this.characterAttack = characterAttack;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
 
     public void loadImagesCharacter() {
@@ -66,23 +88,34 @@ public class GameCharacter {
         this.image2 = GameCharacter.readFileIntoArray(fileName2);
     }
 
-    public void draw1() {
-        DisplayManager.printCharacter_RGB(image1, initY, initX);
+    public void drawCharacter1OnTheScreen(int x, int y) {
+        initY = y;
+        initX = x;
+        this.drawCharacter1OnTheScreen();
     }
 
-    public void draw2() {
-        DisplayManager.printCharacter_RGB(image2, initY, initX);
+    public void decreaseLife(int attacke) {
+        int loseLife = characterDefense - attacke;
+        characterLife += loseLife > 0 ? 0 : loseLife;
     }
 
-    public void eraseFromScreen() {
+    public void drawCharacter1OnTheScreen() {
+        Random x = new Random();
+        int[][][] randomArray = x.nextBoolean() ? image1 : image2;
+        DisplayManager.printCharacter_RGB(randomArray, initY, initX);
+        DisplayManager.printAtPosition(getCharacterName() + ":("+String.valueOf(characterLife) +")"+ "#".repeat(this.characterLife / 10), initX, initY);
+    }
+
+    public void eraseCharacterFromScreen() {
         DisplayManager.cleanArea_RGB(40, 25, initY, initX);
     }
 
     public void updatePosition(int x, int y) {
-        eraseFromScreen();
+        eraseCharacterFromScreen();
         initX = x;
         initY = y;
-        DisplayManager.printCharacter_RGB(image1, initY, initX);
+        drawCharacter1OnTheScreen();
+
     }
 
     public void updatePosition2(int x, int y) {
@@ -90,11 +123,12 @@ public class GameCharacter {
         initX = x;
         initY = y;
         DisplayManager.printCharacter_RGB(image2, initY, initX);
+
     }
 
-    public static void saveArrayIntoFile(String fileName, int[][][] array) {
+    public static void saveArrayDataIntoFile(String fileName, int[][][] array) {
         try {
-            FileWriter output = new FileWriter(GameCharacter.defaultDataArrayFolder+fileName);
+            FileWriter output = new FileWriter(GameCharacter.defaultDataArrayFolder + fileName);
 
             for (int i = 0; i < array.length; i++) {
                 for (int j = 0; j < array[0].length; j++) {
@@ -119,7 +153,7 @@ public class GameCharacter {
 
     private static int[][][] readFileIntoArray(String fileName) {
 
-        String filePath=GameCharacter.defaultDataArrayFolder+fileName;
+        String filePath = GameCharacter.defaultDataArrayFolder + fileName;
         try {
             FileReader input = new FileReader(filePath);
             int cx = -1;
@@ -183,75 +217,4 @@ public class GameCharacter {
     public int getInitX() {
         return initX;
     }
-
-    public void setInitX(int initX) {
-        this.initX = initX;
-    }
-
-    public int getInitY() {
-        return initY;
-    }
-
-    public void setInitY(int initY) {
-        this.initY = initY;
-    }
-
-    public int[][][] getImage1() {
-        return image1;
-    }
-
-    public void setImage1(int[][][] image1) {
-        this.image1 = image1;
-    }
-
-    public int[][][] getImage2() {
-        return image2;
-    }
-
-    public void setImage2(int[][][] image2) {
-        this.image2 = image2;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
-    // setters
-    public void setCharacterName(String characterName) {
-        this.characterName = characterName;
-    }
-
-    public void setCharacterLife(int characterLife) {
-        this.characterLife = characterLife;
-    }
-
-    public void setCharacterStrength(int characterStrength) {
-        this.characterStrength = characterStrength;
-    }
-
-    public void setCharacterDefense(int characterDefense) {
-        this.characterDefense = characterDefense;
-    }
-
-    // getters
-    public String getCharacterName() {
-        return characterName;
-    }
-
-    public int getCharacterLife() {
-        return characterLife;
-    }
-
-    public int getCharacterStrength() {
-        return characterStrength;
-    }
-
-    public int getCharacterDefense() {
-        return characterDefense;
-    }
-
 }

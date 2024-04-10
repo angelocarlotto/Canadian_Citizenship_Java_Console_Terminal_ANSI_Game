@@ -1,3 +1,6 @@
+/**
+ * Guide to thhe ANSI Code https://gist.github.com/fnky/458719343aabd01cfb17a3a4f7296797 used to develop this class
+ */
 public class ANSICodeManager {
     public static char escCode = '\033';
     public static String backgroundColorDefault = "48;5;255m";
@@ -10,7 +13,7 @@ public class ANSICodeManager {
     public static void printOneSpace() {
         System.out.printf(" ");// cursor 0x0
     }
-
+    
     public static void setCursorToHomePosition() {
         System.out.printf("%c[H", ANSICodeManager.escCode);// cursor 0x0
     }

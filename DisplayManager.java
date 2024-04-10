@@ -5,12 +5,14 @@ public class DisplayManager {
     public static Random random = new Random();
     public static int pointInitY = 0;
     public static int pointInitX = 0;
-    public static int height = 60;
-    public static int width = 200;
+    public static int height = 30;
+    public static int width = 100;
     public static int maxTimeToDigitDelay = 100;
 
-    public static void init() {
+    public static void init(int height, int width) {
 
+        DisplayManager.height=height;
+        DisplayManager.width=width;
         ANSICodeManager.setCursorToHomePosition();
         ANSICodeManager.cleanWholeTerminal();
         ANSICodeManager.disableCursorIndicator();
@@ -147,6 +149,11 @@ public class DisplayManager {
         print(msg, 1);
     }
 
+    public static void printAtPosition(String msg,int x, int y) {
+        ANSICodeManager.setCustomCursorPosition(x, y);
+        print(msg, 1);
+    }
+
     public static void printCharacter_RGB(int[][][] arrayCharacter40x25, int startPostY, int startPosX) {
         int postY = startPostY;
         int postX = startPosX;
@@ -165,8 +172,8 @@ public class DisplayManager {
         }
 
     }
-
-    public static void cleanArea_RGB(int height, int width, int startPostY, int startPosX) {
+    
+  public static void cleanArea_RGB(int height, int width, int startPostY, int startPosX) {
         int postY = startPostY;
         int postX = startPosX;
         for (int row = 0; row < height; row++) {
@@ -181,6 +188,7 @@ public class DisplayManager {
         }
 
     }
+ 
 
     public static void cleanArea_RGB_v2(int height, int width, int startPostY, int startPosX) {
         int postY = startPostY;
@@ -242,62 +250,12 @@ public class DisplayManager {
 
         ANSICodeManager.resetAllStyleAndColorMode();
     }
-
-    public static void messageBox(String msg, int startPointY, int startPointX, boolean withDelay) {
-        ANSICodeManager.resetAllStyleAndColorMode();
-        int msgLength = msg.length();
-        int paddingLeftOrRight = 3;
-        int paddintTopOrBotton = 2;
-        int legnthBorderTopAndButton = msgLength + paddingLeftOrRight * 2;
-        int boxHight = 4;
-
-        System.out.printf("%c[40m ", ANSICodeManager.escCode);
-
-        // draw borders top and button of the box
-        for (int i = 0; i < legnthBorderTopAndButton; i++) {
-            ANSICodeManager.setCustomCursorPosition(startPointX + i, startPointY);
-            ANSICodeManager.printOneSpace();
-
-            ANSICodeManager.setCustomCursorPosition(startPointX + i, startPointY + boxHight);
-            ANSICodeManager.printOneSpace();
-        }
-
-        for (int i = 0; i <= boxHight; i++) {
-
-            // draw border left of the box
-            ANSICodeManager.setCustomCursorPosition(startPointX, startPointY + i);
-            ANSICodeManager.printOneSpace();
-
-            // draw border right of the box
-            ANSICodeManager.setCustomCursorPosition(startPointX + legnthBorderTopAndButton, startPointY + i);
-            ANSICodeManager.printOneSpace();
-        }
-
-        ANSICodeManager.setCustomCursorPosition(startPointX + paddingLeftOrRight, startPointY + paddintTopOrBotton);
-        // setCursor(startPointY + paddintTopOrBotton, startPointX +
-        // paddingLeftOrRight);
-
-        ANSICodeManager.resetAllStyleAndColorMode();
-        System.out.printf("%c[32;47m ", ANSICodeManager.escCode);
-        if (withDelay) {
-            for (int i = 0; i < msg.length(); i++) {
-                // print(msg.charAt(i));
-
-                System.out.print(msg.charAt(i));
-                try {
-                    Thread.sleep(random.nextInt(1, maxTimeToDigitDelay));
-                } catch (Exception e) {
-                }
-
-            }
-        } else {
-            print(msg);
-        }
-        ANSICodeManager.resetAllStyleAndColorMode();
+    public static MessageBox messageBox(String msg, int startPointY, int startPointX,boolean withDelay) {
+        MessageBox msgBOx=new MessageBox(startPointX, startPointY, 4, startPointX, msg);
+        msgBOx.draw(withDelay);
+        return msgBOx;
     }
-
-    public static void messageBox(String msg, int startPointY, int startPointX) {
-        messageBox(msg, pointInitY, pointInitX, true);
-
+    public static MessageBox messageBox(String msg, int startPointY, int startPointX) {
+       return messageBox(msg, startPointY, startPointX, false);
     }
 }
