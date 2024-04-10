@@ -63,7 +63,7 @@ public class GameRun {
                         msg = DisplayManager.messageBox(
                                         "With courage and strategy, you'll navigate through the trials ahead." +
                                                         "\nAre you ready to start" +
-                                                        "\nyour journey? (Yes/No)",
+                                                        "\nyour journey? (\033[4;31mYes\033[0m/No)",
                                         DisplayManager.height / 2, DisplayManager.width / 2);
                         anwser = "";
                         anwser += scanner.nextLine();
@@ -111,23 +111,22 @@ public class GameRun {
                                                         imigrante.decreaseLife(random.nextInt(0,
                                                                         monster.getCharacterAttack()));
 
-                                                        msg=DisplayManager.messageBox(
+                                                        msg = DisplayManager.messageBox(
                                                                         "Press enter to " + imigrante.getCharacterName()
                                                                                         + " Play",
                                                                         20,
-                                                                        (DisplayManager.width / 2)-5);
+                                                                        (DisplayManager.width / 2) - 10);
                                                 } else {
                                                         monster.decreaseLife(random.nextInt(0,
                                                                         imigrante.getCharacterAttack()));
 
-                                                                        msg=DisplayManager.messageBox(
+                                                        msg = DisplayManager.messageBox(
                                                                         "Press enter to " + monster.getCharacterName()
                                                                                         + " Play",
                                                                         20,
-                                                                        (DisplayManager.width / 2)-5);
+                                                                        (DisplayManager.width / 2) - 10);
                                                 }
 
-                                                
                                                 timeToHeroPlay = !timeToHeroPlay;
 
                                                 anwser = "";
