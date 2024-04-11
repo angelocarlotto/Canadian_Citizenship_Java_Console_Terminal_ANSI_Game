@@ -3,14 +3,7 @@
     "base_path": "/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1",
     "out": "/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/javadoc",
     "javadoc_executable": "/Library/Java/JavaVirtualMachines/jdk-21.jdk/Contents/Home/bin/javadoc",
-    "exclude": [
-        "Hero.java",
-        "Monster1.java",
-        "Monster2.java",
-        "Monster3.java",
-        "Monster4.java",
-        "ReadPixels.java"
-    ],
+    "exclude": [],
     "raw_params": ""
 }
 
@@ -134,58 +127,58 @@ public class DisplayManager {
     public static void printCharacter_RGB(int[][][] arrayCharacter40x25, int startPostY, int startPosX) {
                        ^
 Generating /Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/javadoc/GameCharacter.html...
-/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/GameCharacter.java:80: warning: no main description
+/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/GameCharacter.java:76: warning: no main description
      * @return int
        ^
-/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/GameCharacter.java:87: warning: no main description
+/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/GameCharacter.java:83: warning: no main description
      * @param characterLife
        ^
-/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/GameCharacter.java:87: warning: no description for @param
+/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/GameCharacter.java:83: warning: no description for @param
      * @param characterLife
        ^
-/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/GameCharacter.java:142: warning: no description for @param
+/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/GameCharacter.java:138: warning: no description for @param
      * @param attacke
        ^
-/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/GameCharacter.java:155: error: @param name not found
+/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/GameCharacter.java:151: error: @param name not found
      * @param x x position on the screen
               ^
-/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/GameCharacter.java:156: error: @param name not found
+/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/GameCharacter.java:152: error: @param name not found
      * @param y y position on the screen
               ^
-/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/GameCharacter.java:158: warning: no @param for randomArray
+/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/GameCharacter.java:154: warning: no @param for randomArray
     public void drawCharacter1OnTheScreen(int[][][] randomArray) {
                 ^
-/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/GameCharacter.java:175: error: @param name not found
+/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/GameCharacter.java:171: error: @param name not found
      * @param x x position on the screen
               ^
-/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/GameCharacter.java:176: error: @param name not found
+/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/GameCharacter.java:172: error: @param name not found
      * @param y y position on the screen
               ^
-/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/GameCharacter.java:13: warning: no comment
+/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/GameCharacter.java:9: warning: no comment
 public class GameCharacter {
        ^
-/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/GameCharacter.java:66: warning: no comment
+/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/GameCharacter.java:62: warning: no comment
     public GameCharacter(String fileName1, String fileName2, String fileName3, String fileName4) {
            ^
-/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/GameCharacter.java:70: warning: no comment
+/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/GameCharacter.java:66: warning: no comment
     public GameCharacter(String characterName, String fileName1, String fileName2, String fileName3, String fileName4) {
            ^
-/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/GameCharacter.java:101: warning: no comment
+/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/GameCharacter.java:97: warning: no comment
     public int getCharacterAttack() {
                ^
-/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/GameCharacter.java:93: warning: no comment
+/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/GameCharacter.java:89: warning: no comment
     public String getCharacterName() {
                   ^
-/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/GameCharacter.java:109: warning: no comment
+/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/GameCharacter.java:105: warning: no comment
     public String getCountry() {
                   ^
-/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/GameCharacter.java:105: warning: no comment
+/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/GameCharacter.java:101: warning: no comment
     public void setCharacterAttack(int characterAttack) {
                 ^
-/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/GameCharacter.java:97: warning: no comment
+/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/GameCharacter.java:93: warning: no comment
     public void setCharacterName(String characterName) {
                 ^
-/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/GameCharacter.java:113: warning: no comment
+/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/GameCharacter.java:109: warning: no comment
     public void setCountry(String country) {
                 ^
 Generating /Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/javadoc/GameRun.html...

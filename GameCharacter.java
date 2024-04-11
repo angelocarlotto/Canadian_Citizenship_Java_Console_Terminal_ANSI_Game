@@ -1,11 +1,7 @@
-
 /**
-* this class will represent each character on the game.
-* @author Angelo Carlotto, Geraldo Beiro, Henrique, Shabnam.
-* Date: Mar 16th, 2024.
-* Time: 9:30PM
-*/
-
+ * this class will represent each character on the game.
+ *  @author Angelo Carlotto, Geraldo Beiro, Henrique, Shabnam.  
+ */
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.Random;
