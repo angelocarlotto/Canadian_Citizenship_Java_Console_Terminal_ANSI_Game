@@ -27,6 +27,11 @@ public class GameRun {
 
         static GameCharacter[] monstersSlashLevels = { mosnter1, mosnter2, mosnter3, mosnter4 };
 
+        static String[] recoveryItemsDefault = new String[] { "1-Voluntary Job (restores 10 points)",
+                        "2-Part-time Job (restores 20 points)",
+                        "3-Full-time Job (restores 30 points)" };
+        static boolean[] recoveryItemUsed = new boolean[] { false, false, false };
+
         public static void main(String[] args) {
                 DisplayManager.init(60, 200);
                 int meanY = (DisplayManager.height / 2) - 5;
@@ -239,15 +244,15 @@ public class GameRun {
                                                 // enter the letter o to enter the option mode
                                                 if (anwser.equalsIgnoreCase("o") && timeToMainCharacterPlay) {
 
-                                                        msgCenterScreen = DisplayManager.messageBox(
-                                                                        "Recovery Items: " +
-                                                                                        "\n1-Voluntary Job (restores 10 points)"
-                                                                                        +
-                                                                                        "\n2-Part-time Job (restores 20 points)"
-                                                                                        +
-                                                                                        "\n3-Full-time Job (restores 30 points)"
-                                                                                        +
-                                                                                        "\n\nPress enter to continue",
+                                                        String message = "Recovery Items: ";
+                                                        for (int i = 0; i < recoveryItemsDefault.length; i++) {
+
+                                                                if (!recoveryItemUsed[i])
+                                                                        message += "\n" + recoveryItemsDefault[i];
+                                                        }
+                                                        message += "\n\nPress enter to continue";
+
+                                                        msgCenterScreen = DisplayManager.messageBox(message,
                                                                         20,
                                                                         (DisplayManager.width / 2) - 10);
 
@@ -261,14 +266,17 @@ public class GameRun {
                                                                         mainCharacter.setCharacterLife(
                                                                                         mainCharacter.getCharacterLife()
                                                                                                         + 10);
+                                                                        recoveryItemUsed[0] = true;
                                                                 } else if (anwser.equalsIgnoreCase("2")) {
                                                                         mainCharacter.setCharacterLife(
                                                                                         mainCharacter.getCharacterLife()
                                                                                                         + 20);
+                                                                        recoveryItemUsed[1] = true;
                                                                 } else if (anwser.equalsIgnoreCase("3")) {
                                                                         mainCharacter.setCharacterLife(
                                                                                         mainCharacter.getCharacterLife()
                                                                                                         + 30);
+                                                                        recoveryItemUsed[2] = true;
                                                                 }
                                                         }
 
@@ -346,18 +354,47 @@ public class GameRun {
                                         // if the main character lose, it is game over
                                         if (mainCharacter.getCharacterLife() > 0) {
                                                 mainCharacter.updateWinningPosition();
-                                                msgCenterScreen = DisplayManager.messageBox(
-                                                                "Congratulations! " + monster.getCharacterName()
-                                                                                + "’s life points have dropped to 0." +
-                                                                                "\nYou've won this battle and can"
-                                                                                +
-                                                                                "\nmove forward on your journey." +
-                                                                                "\n\nPress Enter to continue....",
-                                                                20,
-                                                                (DisplayManager.width / 2) - 40);
+
+                                                if (levelCounter < monstersSlashLevels.length - 2) {
+                                                        msgCenterScreen = DisplayManager.messageBox(
+                                                                        "Congratulations! " + monster.getCharacterName()
+                                                                                        + "’s life points have dropped to 0."
+                                                                                        +
+                                                                                        "\nYou've won this battle and can"
+                                                                                        +
+                                                                                        "\nmove forward on your journey."
+                                                                                        +
+                                                                                        "\n\nPress Enter to continue....",
+                                                                        20,
+                                                                        (DisplayManager.width / 2) - 40);
+                                                } else {
+
+                                                        msgCenterScreen = DisplayManager.messageBox(
+                                                                        "Congratulations! " + monster.getCharacterName()
+                                                                                        + "’s life points have dropped to 0."
+                                                                                        +
+                                                                                        "\n\nAfter defeating the final monster, you've proven your"
+                                                                                        +
+                                                                                        "\ndetermination and strength."
+                                                                                        +
+                                                                                        "\n\nA certificate of Canadian Citizenship is granted to you,"
+                                                                                        +
+                                                                                        "\n"
+                                                                                        + mainCharacter.getCharacterName()
+                                                                                        + ", in recognition of your perseverance and"
+                                                                                        +
+                                                                                        "\ncourage."
+                                                                                        +
+                                                                                        "\n\nCongratulations! Welcome to your new home."
+                                                                                        +
+                                                                                        "\n\nPress Enter to continue....",
+                                                                        20,
+                                                                        (DisplayManager.width / 2) - 40);
+                                                }
 
                                                 // always the main character will be the firt to play on every turn
                                                 timeToMainCharacterPlay = true;
+
                                                 // increase the level
                                                 levelCounter++;
 
@@ -382,6 +419,10 @@ public class GameRun {
                                                 if (anwser.equalsIgnoreCase("yes")) {
                                                         // reset levelCounter to first level, level 0
                                                         levelCounter = 0;
+
+                                                        // reset recovery items
+                                                        recoveryItemUsed = new boolean[] { false, false, false };
+
                                                         // reset life of all characters
                                                         mainCharacter.setCharacterLife(50);
                                                         for (GameCharacter character : GameRun.monstersSlashLevels) {
