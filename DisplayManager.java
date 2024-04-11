@@ -15,6 +15,11 @@ public class DisplayManager {
     public static int width = 100;
     public static int maxTimeToDigitDelay = 50;
 
+    /**
+     * this method initiate the terminal by appling the background color and positioning the cursor.
+     * @param height height of the screen
+     * @param width widht of the screen
+     */
     public static void init(int height, int width) {
 
         DisplayManager.height = height;

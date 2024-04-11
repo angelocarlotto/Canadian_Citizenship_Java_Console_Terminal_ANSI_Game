@@ -14,6 +14,9 @@ public class GameCharacter {
 
     private String characterName;
     private String country;
+    /**
+     * This static variable hold the amont of life each character has. In case the player whats to play again the life will be reseted to this value.
+     */
     public static int defaultAmontOfLife = 30;
     private int characterLife = defaultAmontOfLife;
     private int characterAttack = 20;
@@ -124,8 +127,8 @@ public class GameCharacter {
     /**
      * This method draw on the screen the character on the especific x,y position
      * 
-     * @param x
-     * @param y
+     * @param x x position on the screen
+     * @param y y position on the screen
      */
     public void drawCharacter1OnTheScreen(int x, int y) {
         initY = y;
@@ -188,8 +191,8 @@ public class GameCharacter {
     /**
      * change the position of the draw character on the screen
      * 
-     * @param x
-     * @param y
+     * @param x x position on the screen
+     * @param y y position on the screen
      */
     public void updatePosition(int x, int y) {
         eraseCharacterFromScreen();
