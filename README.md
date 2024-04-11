@@ -25,23 +25,16 @@ Great, [Character Name]! Here are your starting attributes:
 # Character of the game
 
 ## Main Character
-
-<img srg="images/hero1_1.png"  width="25" />
+![<img srg="[images/hero1_1.png](https://github.com/angelocarlotto/Canadian_Citizenship_Java_Console_Terminal_ANSI_Game/blob/master/images/hero1_1.png)"  width="200" />](https://github.com/angelocarlotto/Canadian_Citizenship_Java_Console_Terminal_ANSI_Game/blob/master/images/hero1_1.png)
 
 ## CIC Wolf
-
-<img srg="./images/monster1_1.png"  width="25" />
+![images/monster1_1.png](https://github.com/angelocarlotto/Canadian_Citizenship_Java_Console_Terminal_ANSI_Game/blob/master/images/monster1_1.png)
 
 ## IRCC Immigration
-
-
-<img srg="./images/monster2_1.png"  width="25" />
+![./images/monster2_1.png](https://github.com/angelocarlotto/Canadian_Citizenship_Java_Console_Terminal_ANSI_Game/blob/master/images/monster2_1.png)
 
 ## Big Headed from College
-
-
-<img srg="./images/monster3_1.png"  width="25" />
+![./images/monster3_1.png](https://github.com/angelocarlotto/Canadian_Citizenship_Java_Console_Terminal_ANSI_Game/blob/master/images/monster3_1.png)
 
 ## Final Boss - Canadian Citzenship
-
-<img srg="./images/monster4_1.png"  width="25" />
+![./images/monster4_1.png](https://github.com/angelocarlotto/Canadian_Citizenship_Java_Console_Terminal_ANSI_Game/blob/master/images/monster4_1.png)
