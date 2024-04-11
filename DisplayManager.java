@@ -2,7 +2,7 @@
 import java.util.Random;
 
 /**
- * 
+ * This class is responsable to hold method that will help how to draw elements on the terminal
  * @author shabnam, geraldo, henrique, angelo
  */
 public class DisplayManager {

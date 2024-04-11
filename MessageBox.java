@@ -4,6 +4,7 @@ import java.util.regex.Pattern;
 
 
 /**
+ * This classe is the blue print to all box messages printed on the terminal.
  * 
  * @author shabnam, geraldo, henrique, angelo
  */

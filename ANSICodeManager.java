@@ -1,5 +1,7 @@
 /**
  * Guide to thhe ANSI Code https://gist.github.com/fnky/458719343aabd01cfb17a3a4f7296797 used to develop this class
+ * 
+ * This class translate all the ANSI code to a Java form
  * @author shabnam, geraldo, henrique, angelo
  */
 public class ANSICodeManager {

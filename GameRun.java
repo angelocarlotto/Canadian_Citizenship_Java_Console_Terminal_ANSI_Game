@@ -3,7 +3,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 /**
- * 
+ * This class is responsable to run the game
  * @author shabnam, geraldo, henrique, angelo
  */
 public class GameRun {
@@ -45,20 +45,24 @@ public class GameRun {
                                 characterAux.loadImagesCharacter();
 
                         ANSICodeManager.enableCursorIndicator();
-                        msgCenterScreen = DisplayManager.messageBox("Please enter your character's name:",
-                                        meanY, meanX);
+                        do {
+                                msgCenterScreen = DisplayManager.messageBox("Please enter your character's name:",
+                                                meanY, meanX);
 
-                        anwser += scanner.nextLine();
-                        hero.setCharacterName(anwser);
-                        msgCenterScreen.clean();
+                                anwser += scanner.nextLine();
+                                hero.setCharacterName(anwser);
+                                msgCenterScreen.clean();
+                        } while (anwser.isEmpty());
 
-                        msgCenterScreen = DisplayManager.messageBox("Please enter your nationality:",
-                                        meanY,
-                                        meanX);
-                        anwser = "";
-                        anwser += scanner.nextLine();
-                        hero.setCountry(anwser);
-                        msgCenterScreen.clean();
+                        do {
+                                msgCenterScreen = DisplayManager.messageBox("Please enter your nationality:",
+                                                meanY,
+                                                meanX);
+                                anwser = "";
+                                anwser += scanner.nextLine();
+                                hero.setCountry(anwser);
+                                msgCenterScreen.clean();
+                        } while (anwser.isEmpty());
 
                         msgCenterScreen = DisplayManager.messageBox(
                                         "Great, " + hero.getCharacterName() + "! Here are your starting attribsutes:" +
