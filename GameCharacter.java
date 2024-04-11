@@ -1,6 +1,6 @@
 
 /**
- * this class will represent each character on the game.
+* this class will represent each character on the game.
 * @author Angelo Carlotto, Geraldo Beiro, Henrique, Shabnam.
 * Date: Mar 16th, 2024.
 * Time: 9:30PM
@@ -14,7 +14,7 @@ public class GameCharacter {
 
     private String characterName;
     private String country;
-    public static int defaultAmontOfLife=30;
+    public static int defaultAmontOfLife = 30;
     private int characterLife = defaultAmontOfLife;
     private int characterAttack = 20;
     private int characterDefense = 8;
@@ -49,7 +49,7 @@ public class GameCharacter {
      * this array 3x3 will hold the defeted image of the character
      */
     private int[][][] image3Defeated = new int[][][] {};
-    
+
     /**
      * this array 3x3 will hold the winning image of the character
      */
@@ -111,6 +111,9 @@ public class GameCharacter {
         this.country = country;
     }
 
+    /**
+     * This method helps to load the images stored on .txt files into arrayx 3x3
+     */
     public void loadImagesCharacter() {
         this.image1 = GameCharacter.readFileIntoArray(fileName1);
         this.image2 = GameCharacter.readFileIntoArray(fileName2);
@@ -118,12 +121,24 @@ public class GameCharacter {
         this.image4Won = GameCharacter.readFileIntoArray(fileName4Won);
     }
 
+    /**
+     * This method draw on the screen the character on the especific x,y position
+     * 
+     * @param x
+     * @param y
+     */
     public void drawCharacter1OnTheScreen(int x, int y) {
         initY = y;
         initX = x;
         this.drawCharacter1OnTheScreen();
     }
 
+    /**
+     * This method decrease the character's life based on the oponent attack
+     * 
+     * @param attacke
+     * @return returns the ammount of life lose
+     */
     public int decreaseLife(int attacke) {
         int loseLife = characterDefense - attacke;
         characterLife += loseLife > 0 ? 0 : loseLife;
@@ -131,6 +146,12 @@ public class GameCharacter {
         return loseLife;
     }
 
+    /**
+     * This method draw on the screen the character on previous defined x,y position
+     * 
+     * @param x x position on the screen
+     * @param y y position on the screen
+     */
     public void drawCharacter1OnTheScreen(int[][][] randomArray) {
 
         DisplayManager.printCharacter_RGB(randomArray, initY, initX);
@@ -140,16 +161,36 @@ public class GameCharacter {
                 initX, initY);
     }
 
+    /**
+     * This method draw on the screen the character on previous defined x,y position
+     * .
+     * This method use a random object to random display the image between the image
+     * 1 and 2 to give moviment.
+     * If the life of the character is below zero, the image display will be
+     * defeated one.
+     * 
+     * @param x x position on the screen
+     * @param y y position on the screen
+     */
     public void drawCharacter1OnTheScreen() {
         Random randomAux = new Random();
         int[][][] randomArray = characterLife <= 0 ? image3Defeated : randomAux.nextBoolean() ? image1 : image2;
         drawCharacter1OnTheScreen(randomArray);
     }
 
+    /**
+     * this method clean the screen exactly on the previous reaginon it was draw
+     */
     public void eraseCharacterFromScreen() {
         DisplayManager.cleanArea_RGB(40, 25, initY, initX);
     }
 
+    /**
+     * change the position of the draw character on the screen
+     * 
+     * @param x
+     * @param y
+     */
     public void updatePosition(int x, int y) {
         eraseCharacterFromScreen();
         initX = x;
@@ -158,45 +199,21 @@ public class GameCharacter {
 
     }
 
+    /**
+     * draw the character on thw winning position
+     */
     public void updateWinningPosition() {
         eraseCharacterFromScreen();
         drawCharacter1OnTheScreen(image4Won);
 
     }
 
-    public void updatePosition2(int x, int y) {
-        DisplayManager.cleanArea_RGB_v2(40, 25, initY, initX);
-        initX = x;
-        initY = y;
-        DisplayManager.printCharacter_RGB(image2, initY, initX);
-
-    }
-
-    public static void saveArrayDataIntoFile(String fileName, int[][][] array) {
-        try {
-            FileWriter output = new FileWriter(GameCharacter.defaultDataArrayFolder + fileName);
-
-            for (int i = 0; i < array.length; i++) {
-                for (int j = 0; j < array[0].length; j++) {
-                    output.write("");
-                    output.write(String.valueOf(array[i][j][0]) + ", ");
-                    output.write(String.valueOf(array[i][j][1]) + ", ");
-                    output.write(String.valueOf(array[i][j][2]) + ", ");
-                    output.write(String.valueOf(array[i][j][3]) + ", ");
-                    output.write(String.valueOf(array[i][j][4]));
-                    if (j == array[0].length - 1)
-                        output.write(" ");
-                    else
-                        output.write("# ");
-                }
-                output.write("\n");
-            }
-            output.close();
-        } catch (Exception e) {
-            e.getStackTrace();
-        }
-    }
-
+    /**
+     * this method load the files content into arrayx 3x3
+     * 
+     * @param fileName
+     * @return
+     */
     private static int[][][] readFileIntoArray(String fileName) {
 
         String filePath = GameCharacter.defaultDataArrayFolder + fileName;
@@ -260,7 +277,4 @@ public class GameCharacter {
         return null;
     }
 
-    public int getInitX() {
-        return initX;
-    }
 }

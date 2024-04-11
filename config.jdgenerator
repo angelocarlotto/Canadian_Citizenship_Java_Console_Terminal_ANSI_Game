@@ -1,0 +1,242 @@
+==== CONFIGS ====		
+{
+    "base_path": "/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1",
+    "out": "/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/javadoc",
+    "javadoc_executable": "/Library/Java/JavaVirtualMachines/jdk-21.jdk/Contents/Home/bin/javadoc",
+    "exclude": [
+        "Hero.java",
+        "Monster1.java",
+        "Monster2.java",
+        "Monster3.java",
+        "Monster4.java",
+        "ReadPixels.java"
+    ],
+    "raw_params": ""
+}
+
+==== COMMAND ====
+"/Library/Java/JavaVirtualMachines/jdk-21.jdk/Contents/Home/bin/javadoc" 
+	-sourcepath "/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1" 
+	-d "/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/javadoc" 
+	"/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/ANSICodeManager.java"
+	"/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/DisplayManager.java"
+	"/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/GameCharacter.java"
+	"/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/GameRun.java"
+	"/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/MessageBox.java"
+
+
+==== JAVADOC OUTPUT ====
+Loading source file /Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/ANSICodeManager.java...
+Loading source file /Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/DisplayManager.java...
+Loading source file /Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/GameCharacter.java...
+Loading source file /Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/GameRun.java...
+Loading source file /Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/MessageBox.java...
+Constructing Javadoc information...
+Creating destination directory: "/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/javadoc/"
+Building index for all the packages and classes...
+Standard Doclet version 21.0.1+12-LTS-29
+Building tree for all the packages and classes...
+Generating /Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/javadoc/ANSICodeManager.html...
+/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/ANSICodeManager.java:95: warning: no description for @param
+     * @param x
+       ^
+/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/ANSICodeManager.java:96: warning: no description for @param
+     * @param y
+       ^
+/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/ANSICodeManager.java:105: warning: no description for @param
+     * @param colorIndex
+       ^
+/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/ANSICodeManager.java:113: warning: no description for @param
+     * @param colorIndex
+       ^
+/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/ANSICodeManager.java:121: warning: no description for @param
+     * @param r
+       ^
+/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/ANSICodeManager.java:122: warning: no description for @param
+     * @param g
+       ^
+/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/ANSICodeManager.java:123: warning: no description for @param
+     * @param b
+       ^
+/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/ANSICodeManager.java:12: warning: no comment
+    public static String backgroundColorDefault = "48;5;255m";
+                         ^
+/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/ANSICodeManager.java:11: warning: no comment
+    public static char escCode = '\033';
+                       ^
+/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/ANSICodeManager.java:10: warning: use of default constructor, which does not provide a comment
+public class ANSICodeManager {
+       ^
+Generating /Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/javadoc/DisplayManager.html...
+/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/DisplayManager.java:122: warning: no description for @param
+     * @param msg
+       ^
+/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/DisplayManager.java:123: warning: no description for @param
+     * @param startPointY
+       ^
+/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/DisplayManager.java:124: warning: no description for @param
+     * @param startPointX
+       ^
+/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/DisplayManager.java:125: warning: no description for @param
+     * @param withDelay
+       ^
+/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/DisplayManager.java:137: warning: no description for @param
+     * @param msg
+       ^
+/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/DisplayManager.java:138: warning: no description for @param
+     * @param startPointY
+       ^
+/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/DisplayManager.java:139: warning: no description for @param
+     * @param startPointX
+       ^
+/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/DisplayManager.java:14: warning: no comment
+    public static int height = 30;
+                      ^
+/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/DisplayManager.java:16: warning: no comment
+    public static int maxTimeToDigitDelay = 50;
+                      ^
+/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/DisplayManager.java:13: warning: no comment
+    public static int pointInitX = 0;
+                      ^
+/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/DisplayManager.java:12: warning: no comment
+    public static int pointInitY = 0;
+                      ^
+/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/DisplayManager.java:11: warning: no comment
+    public static Random random = new Random();
+                         ^
+/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/DisplayManager.java:15: warning: no comment
+    public static int width = 100;
+                      ^
+/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/DisplayManager.java:10: warning: use of default constructor, which does not provide a comment
+public class DisplayManager {
+       ^
+/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/DisplayManager.java:89: warning: no comment
+    public static void cleanArea_RGB(int height, int width, int startPostY, int startPosX) {
+                       ^
+/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/DisplayManager.java:105: warning: no comment
+    public static void cleanArea_RGB_v2(int height, int width, int startPostY, int startPosX) {
+                       ^
+/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/DisplayManager.java:18: warning: no comment
+    public static void init(int height, int width) {
+                       ^
+/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/DisplayManager.java:57: warning: no comment
+    public static void print(int timesEmptySpace) {
+                       ^
+/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/DisplayManager.java:61: warning: no comment
+    public static void print(String msg) {
+                       ^
+/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/DisplayManager.java:35: warning: no comment
+    public static void print(String msg, int timesEmptySpace) {
+                       ^
+/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/DisplayManager.java:39: warning: no comment
+    public static void print(String msg, int timesEmptySpace, boolean withDelayOnTyping) {
+                       ^
+/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/DisplayManager.java:65: warning: no comment
+    public static void printAtPosition(String msg, int x, int y) {
+                       ^
+/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/DisplayManager.java:70: warning: no comment
+    public static void printCharacter_RGB(int[][][] arrayCharacter40x25, int startPostY, int startPosX) {
+                       ^
+Generating /Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/javadoc/GameCharacter.html...
+/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/GameCharacter.java:77: warning: no main description
+     * @return int
+       ^
+/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/GameCharacter.java:84: warning: no main description
+     * @param characterLife
+       ^
+/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/GameCharacter.java:84: warning: no description for @param
+     * @param characterLife
+       ^
+/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/GameCharacter.java:13: warning: no comment
+public class GameCharacter {
+       ^
+/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/GameCharacter.java:17: warning: no comment
+    public static int defaultAmontOfLife=30;
+                      ^
+/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/GameCharacter.java:63: warning: no comment
+    public GameCharacter(String fileName1, String fileName2, String fileName3, String fileName4) {
+           ^
+/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/GameCharacter.java:67: warning: no comment
+    public GameCharacter(String characterName, String fileName1, String fileName2, String fileName3, String fileName4) {
+           ^
+/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/GameCharacter.java:127: warning: no comment
+    public int decreaseLife(int attacke) {
+               ^
+/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/GameCharacter.java:143: warning: no comment
+    public void drawCharacter1OnTheScreen() {
+                ^
+/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/GameCharacter.java:134: warning: no comment
+    public void drawCharacter1OnTheScreen(int[][][] randomArray) {
+                ^
+/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/GameCharacter.java:121: warning: no comment
+    public void drawCharacter1OnTheScreen(int x, int y) {
+                ^
+/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/GameCharacter.java:149: warning: no comment
+    public void eraseCharacterFromScreen() {
+                ^
+/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/GameCharacter.java:98: warning: no comment
+    public int getCharacterAttack() {
+               ^
+/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/GameCharacter.java:90: warning: no comment
+    public String getCharacterName() {
+                  ^
+/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/GameCharacter.java:106: warning: no comment
+    public String getCountry() {
+                  ^
+/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/GameCharacter.java:263: warning: no comment
+    public int getInitX() {
+               ^
+/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/GameCharacter.java:114: warning: no comment
+    public void loadImagesCharacter() {
+                ^
+/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/GameCharacter.java:175: warning: no comment
+    public static void saveArrayDataIntoFile(String fileName, int[][][] array) {
+                       ^
+/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/GameCharacter.java:102: warning: no comment
+    public void setCharacterAttack(int characterAttack) {
+                ^
+/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/GameCharacter.java:94: warning: no comment
+    public void setCharacterName(String characterName) {
+                ^
+/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/GameCharacter.java:110: warning: no comment
+    public void setCountry(String country) {
+                ^
+/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/GameCharacter.java:153: warning: no comment
+    public void updatePosition(int x, int y) {
+                ^
+/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/GameCharacter.java:167: warning: no comment
+    public void updatePosition2(int x, int y) {
+                ^
+/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/GameCharacter.java:161: warning: no comment
+    public void updateWinningPosition() {
+                ^
+Generating /Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/javadoc/GameRun.html...
+/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/GameRun.java:48: warning: no main description
+         * @param args
+           ^
+/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/GameRun.java:48: warning: no description for @param
+         * @param args
+           ^
+/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/GameRun.java:10: warning: use of default constructor, which does not provide a comment
+public class GameRun {
+       ^
+Generating /Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/javadoc/MessageBox.html...
+/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/MessageBox.java:58: warning: no description for @param
+     * @param message
+       ^
+/Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/MessageBox.java:39: warning: no comment
+    public MessageBox(int x, int y, int height, String message) {
+           ^
+Generating /Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/javadoc/package-summary.html...
+Generating /Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/javadoc/package-tree.html...
+Generating /Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/javadoc/overview-tree.html...
+Building index for all classes...
+Generating /Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/javadoc/allclasses-index.html...
+Generating /Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/javadoc/allpackages-index.html...
+Generating /Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/javadoc/index-all.html...
+Generating /Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/javadoc/search.html...
+Generating /Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/javadoc/index.html...
+Generating /Users/angelocarlotto/Library/CloudStorage/OneDrive-Personal/Documentos/CANADA/georgian college/semestre1/programa_essenssial/teste1/javadoc/help-doc.html...
+62 warnings
+
+
