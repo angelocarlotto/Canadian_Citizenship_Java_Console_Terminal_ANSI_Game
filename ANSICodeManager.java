@@ -11,10 +11,20 @@ public class ANSICodeManager {
     public static char escCode = '\033';
     public static String backgroundColorDefault = "48;5;255m";
 
+    /**
+     * Prints a string on the current cursor position
+     * @param msg
+     */
     public static void print(String msg) {
         System.out.print(msg);
     }
 
+    /**
+     * Prints a string on a given x and y position on the terminal.
+     * @param msg
+     * @param x
+     * @param y
+     */
     public static void printAtPosition(String msg, int x, int y) {
 
         ANSICodeManager.setCustomCursorPosition(x, y);
@@ -103,8 +113,8 @@ public class ANSICodeManager {
     
     /** 
      * Set the cursosr to aa especific position on the terminal. Helps to draw.
-     * @param x
-     * @param y
+     * @param x x position on the screen
+     * @param y y position on the screen
      */
     public static void setCustomCursorPosition(int x, int y) {
         System.out.printf("%c[%d;%dH", ANSICodeManager.escCode, y, x);
@@ -113,7 +123,7 @@ public class ANSICodeManager {
     
     /** 
      * Set the color of the text to a especific color whose value vary from 0 to 256 which is Gray Scale.
-     * @param colorIndex
+     * @param colorIndex the value goes from o to 256
      */
     public static void set256TextColor(int colorIndex) {
         System.out.printf("%c[38;5;%dm", ANSICodeManager.escCode, colorIndex);
@@ -121,7 +131,7 @@ public class ANSICodeManager {
 
     /**
      * Set the backgroundcolor of the text to a especific color whose value vary from 0 to 256  which is Gray Scale.
-     * @param colorIndex
+     * @param colorIndex the value goes from o to 256
      */
     public static void set256TextBackGroundColor(int colorIndex) {
         System.out.printf("%c[48;5;%dm", ANSICodeManager.escCode, colorIndex);
@@ -129,9 +139,9 @@ public class ANSICodeManager {
 
     /**
      * This method help to set the background color using the RGB color, much more accuaried . But, there is some terminal that this technic/method are not supported.
-     * @param r
-     * @param g
-     * @param b
+     * @param r the value goes from 0 to 255
+     * @param g the value goes from 0 to 255
+     * @param b the value goes from 0 to 255
      */
     public static void setRGBTextBackGroundColor(int r, int g, int b) {
         System.out.printf("%c[48;2;%d;%d;%dm", ANSICodeManager.escCode, r, g, b);

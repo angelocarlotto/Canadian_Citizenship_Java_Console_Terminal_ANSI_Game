@@ -39,7 +39,14 @@ public class DisplayManager {
 
     }
 
-
+    /**
+     * This method helps to print the image stored on a 3x3 array on the
+     * screen/terminal
+     * 
+     * @param arrayCharacter40x25
+     * @param startPostY
+     * @param startPosX
+     */
     public static void printCharacter_RGB(int[][][] arrayCharacter40x25, int startPostY, int startPosX) {
         int postY = startPostY;
         int postX = startPosX;
@@ -59,15 +66,22 @@ public class DisplayManager {
 
     }
 
+    /**
+     * this method helps clean the region previous used to draw something opn the
+     * terminal/screen
+     * 
+     * @param height
+     * @param width
+     * @param startPostY
+     * @param startPosX
+     */
     public static void cleanArea_RGB(int height, int width, int startPostY, int startPosX) {
         int postY = startPostY;
         int postX = startPosX;
         for (int row = 0; row < height; row++) {
 
-            // System.out.printf("%c[%d;%df", DisplayManager.escCode, postY + row, postX);
             ANSICodeManager.setCustomCursorPosition(postX, postY + row);
             for (int col = 0; col < width; col++) {
-                // System.out.printf("%c[48;5;241m ", DisplayManager.escCode);
                 ANSICodeManager.printOneSpaceWithDefaultBackGroundColor();
             }
             System.out.println();
@@ -81,12 +95,12 @@ public class DisplayManager {
      * @param msg
      * @param startPointY
      * @param startPointX
-     * @param withDelay
+     * @param withDelay if treu the message will emulate someone typing on the screen
      * @return Message object that can be clened later on the game
      */
     public static MessageBox messageBox(String msg, int startPointY, int startPointX, boolean withDelay) {
         MessageBox msgBOx = new MessageBox(startPointX, startPointY, 4, msg);
-        msgBOx.draw(false);
+        msgBOx.draw(withDelay);
         return msgBOx;
     }
 

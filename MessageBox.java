@@ -13,11 +13,11 @@ public class MessageBox {
     /**
      * this property holds the X position on the screen to position the message box
      */
-    private int x;
+    private int positionX;
     /**
      * this property holds the Y position on the screen to position the message box
      */
-    private int y;
+    private int positionY;
 
     /**
      * the height of the box that will surrend the text message
@@ -37,8 +37,8 @@ public class MessageBox {
     private int paddintTopOrBotton = 2;
 
     public MessageBox(int x, int y, int height, String message) {
-        this.x = x;
-        this.y = y;
+        this.positionX = x;
+        this.positionY = y;
         this.height = height;
         this.message = message;
     }
@@ -81,8 +81,8 @@ public class MessageBox {
         int legnthBorderTopAndButton = maxLength + paddingLeftOrRight * 2;
         ANSICodeManager.set256TextBackGroundColor(40);
         height += msgsLines.length;
-        for (int iy = y; iy <= height + y; iy++) {
-            for (int ix = x; ix <= legnthBorderTopAndButton + x; ix++) {
+        for (int iy = positionY; iy <= height + positionY; iy++) {
+            for (int ix = positionX; ix <= legnthBorderTopAndButton + positionX; ix++) {
                 ANSICodeManager.setCustomCursorPosition(ix, iy);
                 ANSICodeManager.printOneSpaceWithDefaultBackGroundColor();
             }
@@ -117,22 +117,22 @@ public class MessageBox {
 
         // draw borders top and button of the box
         height += msgsLines.length;
-        for (int i = x; i < legnthBorderTopAndButton + x; i++) {
-            ANSICodeManager.setCustomCursorPosition(i, y);
+        for (int i = positionX; i < legnthBorderTopAndButton + positionX; i++) {
+            ANSICodeManager.setCustomCursorPosition(i, positionY);
             ANSICodeManager.printOneSpace();
 
-            ANSICodeManager.setCustomCursorPosition(i, y + height);
+            ANSICodeManager.setCustomCursorPosition(i, positionY + height);
             ANSICodeManager.printOneSpace();
         }
 
-        for (int i = y; i <= height + y; i++) {
+        for (int i = positionY; i <= height + positionY; i++) {
 
             // draw border left of the box
-            ANSICodeManager.setCustomCursorPosition(x, i);
+            ANSICodeManager.setCustomCursorPosition(positionX, i);
             ANSICodeManager.printOneSpace();
 
             // draw border right of the box
-            ANSICodeManager.setCustomCursorPosition(x + legnthBorderTopAndButton, i);
+            ANSICodeManager.setCustomCursorPosition(positionX + legnthBorderTopAndButton, i);
             ANSICodeManager.printOneSpace();
         }
 
@@ -140,7 +140,7 @@ public class MessageBox {
         if (withDelay) {
             for (int l = 0; l < msgsLines.length; l++) {
 
-                ANSICodeManager.setCustomCursorPosition(x + paddingLeftOrRight, y + paddintTopOrBotton + l);
+                ANSICodeManager.setCustomCursorPosition(positionX + paddingLeftOrRight, positionY + paddintTopOrBotton + l);
 
                 for (int i = 0; i < msgsLines[l].length(); i++) {
 
@@ -155,11 +155,11 @@ public class MessageBox {
         } else {
             for (int l = 0; l < msgsLines.length; l++) {
 
-                ANSICodeManager.setCustomCursorPosition(x + paddingLeftOrRight, y + paddintTopOrBotton + l);
+                ANSICodeManager.setCustomCursorPosition(positionX + paddingLeftOrRight, positionY + paddintTopOrBotton + l);
                 ANSICodeManager.print(msgsLines[l]);
             }
         }
-        ANSICodeManager.setCustomCursorPosition(x + paddingLeftOrRight, y + paddintTopOrBotton + msgsLines.length);
+        ANSICodeManager.setCustomCursorPosition(positionX + paddingLeftOrRight, positionY + paddintTopOrBotton + msgsLines.length);
         ANSICodeManager.resetAllStyleAndColorMode();
 
     }
