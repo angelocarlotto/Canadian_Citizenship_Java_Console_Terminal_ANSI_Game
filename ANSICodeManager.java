@@ -11,6 +11,17 @@ public class ANSICodeManager {
     public static char escCode = '\033';
     public static String backgroundColorDefault = "48;5;255m";
 
+    public static void print(String msg) {
+        System.out.print(msg);
+    }
+
+    public static void printAtPosition(String msg, int x, int y) {
+
+        ANSICodeManager.setCustomCursorPosition(x, y);
+        System.out.print(msg);
+
+    }
+    
     /**
      * Helps to menage the screen. This method will print an empty space whose background color is the default color.
      */

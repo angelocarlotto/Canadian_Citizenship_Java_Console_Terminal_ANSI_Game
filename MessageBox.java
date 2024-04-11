@@ -156,7 +156,7 @@ public class MessageBox {
             for (int l = 0; l < msgsLines.length; l++) {
 
                 ANSICodeManager.setCustomCursorPosition(x + paddingLeftOrRight, y + paddintTopOrBotton + l);
-                DisplayManager.print(msgsLines[l]);
+                ANSICodeManager.print(msgsLines[l]);
             }
         }
         ANSICodeManager.setCustomCursorPosition(x + paddingLeftOrRight, y + paddintTopOrBotton + msgsLines.length);

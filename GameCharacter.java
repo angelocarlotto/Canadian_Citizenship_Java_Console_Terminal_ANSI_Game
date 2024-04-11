@@ -1,3 +1,4 @@
+
 /**
  * this class will represent each character on the game.
  *  @author Angelo Carlotto, Geraldo Beiro, Henrique, Shabnam.  
@@ -11,7 +12,8 @@ public class GameCharacter {
     private String characterName;
     private String country;
     /**
-     * This static variable hold the amont of life each character has. In case the player whats to play again the life will be reseted to this value.
+     * This static variable hold the amont of life each character has. In case the
+     * player whats to play again the life will be reseted to this value.
      */
     public static int defaultAmontOfLife = 30;
     private int characterLife = defaultAmontOfLife;
@@ -87,7 +89,7 @@ public class GameCharacter {
     }
 
     public String getCharacterName() {
-        return "\033[31m" + characterName + "\033[0m";
+        return ANSICodeManager.buildRedText(characterName);
     }
 
     public void setCharacterName(String characterName) {
@@ -135,7 +137,7 @@ public class GameCharacter {
     /**
      * This method decrease the character's life based on the oponent attack
      * 
-     * @param attacke
+     * @param attacke 
      * @return returns the ammount of life lose
      */
     public int decreaseLife(int attacke) {
@@ -155,7 +157,7 @@ public class GameCharacter {
 
         DisplayManager.printCharacter_RGB(randomArray, initY, initX);
         this.characterLife = this.characterLife > 0 ? this.characterLife : 0;
-        DisplayManager.printAtPosition(
+        ANSICodeManager.printAtPosition(
                 getCharacterName() + ":(" + String.valueOf(characterLife) + ")" + "#".repeat(this.characterLife / 10),
                 initX, initY);
     }

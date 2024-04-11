@@ -16,9 +16,11 @@ public class DisplayManager {
     public static int maxTimeToDigitDelay = 50;
 
     /**
-     * this method initiate the terminal by appling the background color and positioning the cursor.
+     * this method initiate the terminal by appling the background color and
+     * positioning the cursor.
+     * 
      * @param height height of the screen
-     * @param width widht of the screen
+     * @param width  widht of the screen
      */
     public static void init(int height, int width) {
 
@@ -37,40 +39,6 @@ public class DisplayManager {
 
     }
 
-    public static void print(String msg, int timesEmptySpace) {
-        print(msg, timesEmptySpace, false);
-    }
-
-    public static void print(String msg, int timesEmptySpace, boolean withDelayOnTyping) {
-
-        if (withDelayOnTyping) {
-            for (int i = 0; i < msg.length(); i++) {
-                System.out.print(msg.charAt(i));
-
-                try {
-
-                    Thread.sleep(random.nextInt(1, maxTimeToDigitDelay));
-                } catch (Exception e) {
-                }
-            }
-        } else {
-            System.out.print(msg);
-
-        }
-    }
-
-    public static void print(int timesEmptySpace) {
-        print(" ", timesEmptySpace);
-    }
-
-    public static void print(String msg) {
-        print(msg, 1);
-    }
-
-    public static void printAtPosition(String msg, int x, int y) {
-        ANSICodeManager.setCustomCursorPosition(x, y);
-        print(msg, 1);
-    }
 
     public static void printCharacter_RGB(int[][][] arrayCharacter40x25, int startPostY, int startPosX) {
         int postY = startPostY;
@@ -107,20 +75,6 @@ public class DisplayManager {
 
     }
 
-    public static void cleanArea_RGB_v2(int height, int width, int startPostY, int startPosX) {
-        int postY = startPostY;
-        int postX = startPosX + width;
-        for (int row = 0; row < height; row++) {
-
-            ANSICodeManager.setCustomCursorPosition(postX, postY + row);
-            for (int col = width - 1; col < width; col++) {
-                ANSICodeManager.printOneSpaceWithDefaultBackGroundColor();
-            }
-            System.out.println();
-        }
-
-    }
-
     /**
      * will print a box message on the screen with optional delay
      * 
@@ -132,7 +86,7 @@ public class DisplayManager {
      */
     public static MessageBox messageBox(String msg, int startPointY, int startPointX, boolean withDelay) {
         MessageBox msgBOx = new MessageBox(startPointX, startPointY, 4, msg);
-        msgBOx.draw(withDelay);
+        msgBOx.draw(false);
         return msgBOx;
     }
 

@@ -8,21 +8,23 @@ import java.util.Scanner;
  * @author shabnam, geraldo, henrique, angelo
  */
 public class GameRun {
-        static Scanner scanner = new Scanner(System.in);
-        static Random random = new Random();
+        private static Scanner scanner = new Scanner(System.in);
+        private static Random random = new Random();
 
-        static GameCharacter hero = new GameCharacter("hero1_hero_frame1_RGB.txt", "hero1_hero_frame2_RGB.txt",
+        private static GameCharacter hero = new GameCharacter("hero1_hero_frame1_RGB.txt", "hero1_hero_frame2_RGB.txt",
                         "hero1_hero_frame3_RGB.txt", "hero1_hero_frame4_RGB.txt");
-        static GameCharacter mosnter1 = new GameCharacter("CIC Wolf", "monster1_monster_frame1_RGB.txt",
+        private static GameCharacter mosnter1 = new GameCharacter("CIC Wolf", "monster1_monster_frame1_RGB.txt",
                         "monster1_monster_frame2_RGB.txt", "monster1_monster_frame3_RGB.txt",
                         "monster1_monster_frame3_RGB.txt");
-        static GameCharacter mosnter2 = new GameCharacter("IRCC Imigration", "monster2_monster_frame1_RGB.txt",
+        private static GameCharacter mosnter2 = new GameCharacter("IRCC Imigration", "monster2_monster_frame1_RGB.txt",
                         "monster2_monster_frame2_RGB.txt", "monster2_monster_frame3_RGB.txt",
                         "monster2_monster_frame3_RGB.txt");
-        static GameCharacter mosnter3 = new GameCharacter("Big Heade from College", "monster3_monster_frame1_RGB.txt",
+        private static GameCharacter mosnter3 = new GameCharacter("Big Heade from College",
+                        "monster3_monster_frame1_RGB.txt",
                         "monster3_monster_frame2_RGB.txt", "monster3_monster_frame3_RGB.txt",
                         "monster3_monster_frame3_RGB.txt");
-        static GameCharacter mosnter4 = new GameCharacter("Canadian Citzenship", "monster4_monster_frame1_RGB.txt",
+        private static GameCharacter mosnter4 = new GameCharacter("Canadian Citzenship",
+                        "monster4_monster_frame1_RGB.txt",
                         "monster4_monster_frame2_RGB.txt", "monster4_monster_frame3_RGB.txt",
                         "monster4_monster_frame3_RGB.txt");
 
@@ -31,18 +33,18 @@ public class GameRun {
          * many levels there is on the game
          * 
          */
-        static GameCharacter[] monstersSlashLevels = { mosnter1, mosnter2, mosnter3, mosnter4 };
+        private static GameCharacter[] monstersSlashLevels = { mosnter1, mosnter2, mosnter3, mosnter4 };
 
         /**
          * this array tell us how many recovery items there is on the game
          */
-        static String[] recoveryItemsDefault = new String[] { "1-Voluntary Job (restores 10 points)",
+        private static String[] recoveryItemsDefault = new String[] { "1-Voluntary Job (restores 10 points)",
                         "2-Part-time Job (restores 20 points)",
                         "3-Full-time Job (restores 30 points)" };
         /**
          * this array will help us understand which item was used or not
          */
-        static boolean[] recoveryItemUsed = new boolean[] { false, false, false };
+        private static boolean[] recoveryItemUsed = new boolean[] { false, false, false };
 
         /**
          * @param args
