@@ -1,5 +1,6 @@
 /**
  * Guide to thhe ANSI Code https://gist.github.com/fnky/458719343aabd01cfb17a3a4f7296797 used to develop this class
+ * @author shabnam, geraldo, henrique, angelo
  */
 public class ANSICodeManager {
     public static char escCode = '\033';

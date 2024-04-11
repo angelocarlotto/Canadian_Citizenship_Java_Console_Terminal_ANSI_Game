@@ -2,6 +2,11 @@ import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+
+/**
+ * 
+ * @author shabnam, geraldo, henrique, angelo
+ */
 public class MessageBox {
     private int x;
     private int y;
@@ -67,7 +72,7 @@ public class MessageBox {
 
         ANSICodeManager.resetAllStyleAndColorMode();
 
-        String textWithANSI = this.message;//"you step onto the \033[31mpath\033[0m of trials, your resolve ";
+        String textWithANSI = this.message;
 
         Pattern pattern = Pattern.compile("\033\\[[0-9;]+m");
         Matcher matcher = pattern.matcher(textWithANSI);
@@ -81,12 +86,10 @@ public class MessageBox {
                 maxLength = linha.length();
             }
         }
+        
         String[] msgsLines = this.message.split("\n");
         int msgLength = maxLength;// this.message.length();
         int legnthBorderTopAndButton = msgLength + paddingLeftOrRight *2;
-        // int boxHight = 4;
-
-        // System.out.printf("%c[40m ", ANSICodeManager.escCode);
 
         // draw borders top and button of the box
         height += msgsLines.length;
@@ -109,13 +112,8 @@ public class MessageBox {
             ANSICodeManager.printOneSpace();
         }
 
-        // ANSICodeManager.setCustomCursorPosition(x + paddingLeftOrRight, y +
-        // paddintTopOrBotton);
-        // setCursor(startPointY + paddintTopOrBotton, startPointX +
-        // paddingLeftOrRight);
 
         ANSICodeManager.resetAllStyleAndColorMode();
-        // System.out.printf("%c[32;47m ", ANSICodeManager.escCode);
         if (withDelay) {
             for (int l = 0; l < msgsLines.length; l++) {
 

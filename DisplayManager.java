@@ -1,6 +1,10 @@
 
 import java.util.Random;
 
+/**
+ * 
+ * @author shabnam, geraldo, henrique, angelo
+ */
 public class DisplayManager {
     public static Random random = new Random();
     public static int pointInitY = 0;
@@ -26,98 +30,8 @@ public class DisplayManager {
 
     }
 
-    public static void drawLine(int numberLine) {
-        ANSICodeManager.resetAllStyleAndColorMode();
 
-        String[] array = { ConsoleColors.BLUE_BACKGROUND, ConsoleColors.CYAN_BACKGROUND,
-                ConsoleColors.GREEN_BACKGROUND, ConsoleColors.PURPLE_BACKGROUND, ConsoleColors.RED_BACKGROUND };
-        print(array[random.nextInt(0, 5)]);
 
-        ANSICodeManager.setCustomCursorPosition(0, numberLine);
-        print(width);
-    }
-
-    public static void drawLine(String color, int numberLine) {
-        // print(ConsoleColors.RESET);
-        ANSICodeManager.resetAllStyleAndColorMode();
-        print(color);
-        ANSICodeManager.setCustomCursorPosition(0, numberLine);
-        print(width);
-        ANSICodeManager.resetAllStyleAndColorMode();
-    }
-
-    public static void drawCollumn(int numberColumn) {
-        ANSICodeManager.resetAllStyleAndColorMode();
-        String[] array = { ConsoleColors.BLUE_BACKGROUND, ConsoleColors.CYAN_BACKGROUND,
-                ConsoleColors.GREEN_BACKGROUND, ConsoleColors.PURPLE_BACKGROUND, ConsoleColors.RED_BACKGROUND };
-
-        drawCollumn(array[random.nextInt(0, 5)], numberColumn);
-
-    }
-
-    public static void drawCollumn(String color, int numberColumn) {
-        ANSICodeManager.resetAllStyleAndColorMode();
-
-        print(color);
-        for (int i = 0; i < height; i++) {
-            // setCursor(i, numberColumn);
-            ANSICodeManager.setCustomCursorPosition(numberColumn, i);
-            ANSICodeManager.printOneSpace();
-        }
-
-    }
-
-    public static void cleanFrame(int rowNumber) {
-        ANSICodeManager.resetAllStyleAndColorMode();
-
-        print(ConsoleColors.BLACK_BACKGROUND);
-        // setCursor(rowNumber, 1);
-        ANSICodeManager.setCustomCursorPosition(1, rowNumber);
-        for (int row = 1; row < height - 2; row++) {
-            for (int col = 1; col < width - 2; col++) {
-                ANSICodeManager.printOneSpace();
-            }
-        }
-    }
-
-    public static void cleanFrame() {
-        ANSICodeManager.resetAllStyleAndColorMode();
-
-        print(ConsoleColors.BLACK_BACKGROUND);
-        ANSICodeManager.setCustomCursorPosition(1, 1);
-        for (int row = 1; row < height - 1; row++) {
-            for (int col = 1; col < width - 1; col++) {
-                ANSICodeManager.printOneSpace();
-            }
-        }
-    }
-
-    public static void drawFrameWindow(String color) {
-
-        ANSICodeManager.resetAllStyleAndColorMode();
-        print(color);
-        for (int i = 0; i < width; i++) {
-            ANSICodeManager.setCustomCursorPosition(pointInitX + i, pointInitY);
-            // print();
-            ANSICodeManager.printOneSpace();
-
-            ANSICodeManager.setCustomCursorPosition(pointInitX + i, pointInitY + height);
-            ANSICodeManager.printOneSpace();
-
-        }
-
-        for (int i = 0; i < height; i++) {
-            ANSICodeManager.setCustomCursorPosition(pointInitX, pointInitY + i);
-            // print();
-            ANSICodeManager.printOneSpace();
-
-            ANSICodeManager.setCustomCursorPosition(pointInitX + width, pointInitY + i);
-            // print();
-            ANSICodeManager.printOneSpace();
-
-        }
-        ANSICodeManager.resetAllStyleAndColorMode();
-    }
 
     public static void print(String msg, int timesEmptySpace) {
         print(msg, timesEmptySpace, false);

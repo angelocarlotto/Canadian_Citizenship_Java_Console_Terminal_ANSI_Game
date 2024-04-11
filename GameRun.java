@@ -2,6 +2,10 @@
 import java.util.Random;
 import java.util.Scanner;
 
+/**
+ * 
+ * @author shabnam, geraldo, henrique, angelo
+ */
 public class GameRun {
         static Scanner scanner = new Scanner(System.in);
         static Random random = new Random();
@@ -27,17 +31,18 @@ public class GameRun {
                 DisplayManager.init(60, 200);
                 int meanY = (DisplayManager.height / 2) - 5;
                 int meanX = (DisplayManager.width / 2) - 25;
-
+                String anwser = "";
+                MessageBox msgCenterScreen = null;
                 try {
 
                         hero.loadImagesCharacter();
-                        for (GameCharacter x : monstersSlashLevels)
-                                x.loadImagesCharacter();
+                        for (GameCharacter characterAux : monstersSlashLevels)
+                                characterAux.loadImagesCharacter();
 
                         ANSICodeManager.enableCursorIndicator();
-                        MessageBox msgCenterScreen = DisplayManager.messageBox("Please enter your character's name:",
+                        msgCenterScreen = DisplayManager.messageBox("Please enter your character's name:",
                                         meanY, meanX);
-                        String anwser = "";
+
                         anwser += scanner.nextLine();
                         hero.setCharacterName(anwser);
                         msgCenterScreen.clean();
@@ -69,7 +74,8 @@ public class GameRun {
                         msgCenterScreen = DisplayManager.messageBox(
                                         "With courage and strategy, you'll navigate through the trials ahead." +
                                                         "\nAre you ready to start" +
-                                                        "\nyour journey? (\033[4;31mYes\033[0m/No)",
+                                                        "\nyour journey? (\033[4;31mYes\033[0m/No)" +
+                                                        "\n\nEnter o to chose a recovery item",
                                         meanY, meanX);
                         scanner.nextLine();
                         msgCenterScreen.clean();
@@ -221,7 +227,8 @@ public class GameRun {
 
                                                         msgCenterScreen = DisplayManager.messageBox(
                                                                         "Press enter to " + monster.getCharacterName()
-                                                                                        + "\nRoll the dices and Play",
+                                                                                        + "\nRoll the dices and Play" +
+                                                                                        "\n\nEnter o to chose a recovery item",
                                                                         20,
                                                                         (DisplayManager.width / 2) - 10);
 
@@ -341,7 +348,7 @@ public class GameRun {
                                                 mainCharacter.updateWinningPosition();
                                                 msgCenterScreen = DisplayManager.messageBox(
                                                                 "Congratulations! " + monster.getCharacterName()
-                                                                                + "’s life points have dropped to 0."+
+                                                                                + "’s life points have dropped to 0." +
                                                                                 "\nYou've won this battle and can"
                                                                                 +
                                                                                 "\nmove forward on your journey." +
