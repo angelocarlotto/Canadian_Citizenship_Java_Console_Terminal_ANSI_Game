@@ -24,8 +24,6 @@ public class GameCharacter {
     private String fileName2;
     private String fileName3Defeated;
     private String fileName4Won;
-    private String priorBattleMessage;
-    private String endBattleMessage;
 
    
 
@@ -54,13 +52,6 @@ public class GameCharacter {
 
     public void setCharacterLife(int characterLife) {
         this.characterLife = characterLife;
-    }
-    public String getPriorBattleMessage() {
-        return priorBattleMessage;
-    }
-
-    public void setPriorBattleMessage(String initialMessage) {
-        this.priorBattleMessage = initialMessage;
     }
 
     public String getCharacterName() {

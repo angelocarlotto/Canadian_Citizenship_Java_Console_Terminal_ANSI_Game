@@ -76,7 +76,7 @@ public class GameRun {
                                                         "\n    Part-time Job (restores 20 points)" +
                                                         "\n    Fulltime Job (restores 30 points)" +
                                                         "\n\nPress enter to continue",
-                                        meanY, meanX);
+                                        meanY, meanX,true);
 
                         scanner.nextLine();
                         msgCenterScreen.clean();
@@ -87,7 +87,7 @@ public class GameRun {
                                                         "\nyour journey? (" + ANSICodeManager.buildRedText("Yes") + "/No)"
                                                         +
                                                         "\n\nPress enter to continue",
-                                        meanY, meanX);
+                                        meanY, meanX,true);
                         anwser = "";
                         anwser = scanner.nextLine();
                         msgCenterScreen.clean();
@@ -146,12 +146,12 @@ public class GameRun {
                                                                                         + " stands in your way" +
                                                                                         "\n\nPress enter to continue",
                                                                         meanY,
-                                                                        (DisplayManager.width / 2) - 35);
+                                                                        (DisplayManager.width / 2) - 35,true);
                                                         break;
 
                                                 case 1:
                                                         msgCenterScreen = DisplayManager.messageBox(
-                                                                        "With CIC Wolf defeated, you advance to the next stage of your journey."
+                                                                        "With "+ANSICodeManager.buildRedText("CIC Wolf")+" defeated, you advance to the next stage of your journey."
                                                                                         +
                                                                                         "\nEach victory brings you closer to your goal of Canadian citizenship."
                                                                                         +
@@ -159,7 +159,7 @@ public class GameRun {
                                                                                         +
                                                                                         "\nproving your strength and determination."
                                                                                         +
-                                                                                        "\n\nNow, you're facing a new enemy IRCC Immigration."
+                                                                                        "\n\nNow, you're facing a new enemy "+ANSICodeManager.buildRedText("IRCC Immigration")+"."
                                                                                         +
                                                                                         "\n\nPrepare yourself, "
                                                                                         + mainCharacter.getCharacterName()
@@ -168,7 +168,7 @@ public class GameRun {
                                                                                         "\n\nPress enter to continue",
 
                                                                         meanY,
-                                                                        (DisplayManager.width / 2) - 35);
+                                                                        (DisplayManager.width / 2) - 35,true);
                                                         break;
 
                                                 case 2:
@@ -178,12 +178,12 @@ public class GameRun {
                                                                                         +
                                                                                         "\nCanadian educational institution."
                                                                                         +
-                                                                                        "\nTest your skills against Big Headed from College."
+                                                                                        "\nTest your skills against "+ANSICodeManager.buildRedText("Big Headed from College")+"."
                                                                                         +
                                                                                         "\n\nPress enter to continue",
 
                                                                         meanY,
-                                                                        (DisplayManager.width / 2) - 35);
+                                                                        (DisplayManager.width / 2) - 35,true);
                                                         break;
 
                                                 case 3:
@@ -208,12 +208,12 @@ public class GameRun {
                                                                                         +
                                                                                         "\ninclusive and ever-thriving.\""
                                                                                         +
-                                                                                        "\n\nAre you prepared to take this final step and defeat me, as your Final Boss?"
+                                                                                        "\n\nAre you prepared to take this final step and defeat me, as your "+ANSICodeManager.buildRedText("Final Boss")+"?"
                                                                                         +
                                                                                         "\n\nPress enter to continue",
 
                                                                         meanY,
-                                                                        (DisplayManager.width / 2) - 35);
+                                                                        (DisplayManager.width / 2) - 35,true);
                                                         break;
 
                                         }
@@ -377,7 +377,7 @@ public class GameRun {
                                                                                         +
                                                                                         "\n\nPress Enter to continue....",
                                                                         20,
-                                                                        (DisplayManager.width / 2) - 40);
+                                                                        (DisplayManager.width / 2) - 40,true);
                                                 } else {
 
                                                         msgCenterScreen = DisplayManager.messageBox(
@@ -400,7 +400,7 @@ public class GameRun {
                                                                                         +
                                                                                         "\n\nPress Enter to continue....",
                                                                         20,
-                                                                        (DisplayManager.width / 2) - 40);
+                                                                        (DisplayManager.width / 2) - 40,true);
                                                 }
 
                                                 // always the main character will be the firt to play on every turn

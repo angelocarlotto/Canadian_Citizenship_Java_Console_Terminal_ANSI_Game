@@ -42,11 +42,6 @@ public class ANSICodeManager {
 
     }
 
-    public static void writeRedText(String text) {
-        System.out.printf("%c[31m%s", ANSICodeManager.escCode, text);
-        ANSICodeManager.resetAllStyleAndColorMode();
-    }
-
     public static String buildRedText(int text) {
         return buildRedText(String.valueOf(text));
     }

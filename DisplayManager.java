@@ -11,7 +11,7 @@ public class DisplayManager {
     public static int pointInitX = 0;
     public static int height = 30;
     public static int width = 100;
-    public static int maxTimeToDigitDelay = 100;
+    public static int maxTimeToDigitDelay = 50;
 
     public static void init(int height, int width) {
 
@@ -117,52 +117,6 @@ public class DisplayManager {
 
     }
 
-    public static void cleanArea_RGB(int[][][] arrayCharacter40x25, int startPostY, int startPosX) {
-        int postY = startPostY;
-        int postX = startPosX;
-        for (int row = 0; row < arrayCharacter40x25.length; row++) {
-
-            ANSICodeManager.setCustomCursorPosition(postX, postY + row);
-            for (int col = 0; col < arrayCharacter40x25[0].length; col++) {
-                ANSICodeManager.printOneSpaceWithDefaultBackGroundColor();
-            }
-            System.out.println();
-        }
-
-    }
-
-    public static void drawBox(int startPointY, int startPointX, int lengthString) {
-        ANSICodeManager.resetAllStyleAndColorMode();
-        int msgLength = lengthString;
-        int paddingLeftOrRight = 3;
-        int paddintTopOrBotton = 2;
-        int legnthBorderTopAndButton = msgLength + paddingLeftOrRight * 2;
-        int boxHight = 4;
-
-        System.out.printf("%c[40m ", ANSICodeManager.escCode);
-
-        // draw borders top and button of the box
-        for (int i = 0; i < legnthBorderTopAndButton; i++) {
-            ANSICodeManager.setCustomCursorPosition(startPointX + i, startPointY);
-            ANSICodeManager.printOneSpace();
-
-            ANSICodeManager.setCustomCursorPosition(startPointX + i, startPointY + boxHight);
-            ANSICodeManager.printOneSpace();
-        }
-
-        for (int i = 0; i <= boxHight; i++) {
-
-            ANSICodeManager.setCustomCursorPosition(startPointX, startPointY + i);
-            ANSICodeManager.printOneSpace();
-
-            ANSICodeManager.setCustomCursorPosition(startPointX + legnthBorderTopAndButton, startPointY + i);
-            ANSICodeManager.printOneSpace();
-        }
-
-        ANSICodeManager.setCustomCursorPosition(startPointX + paddingLeftOrRight, startPointY + paddintTopOrBotton);
-
-        ANSICodeManager.resetAllStyleAndColorMode();
-    }
     public static MessageBox messageBox(String msg, int startPointY, int startPointX,boolean withDelay) {
         MessageBox msgBOx=new MessageBox(startPointX, startPointY, 4, startPointX, msg);
         msgBOx.draw(withDelay);

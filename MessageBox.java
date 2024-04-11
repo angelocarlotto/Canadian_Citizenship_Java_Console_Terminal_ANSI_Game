@@ -62,9 +62,7 @@ public class MessageBox {
             }
         }
     }
-    public void draw(){
-        draw(false);
-    }
+   
     public void draw(boolean withDelay) {
 
         ANSICodeManager.resetAllStyleAndColorMode();
@@ -112,7 +110,7 @@ public class MessageBox {
 
                 ANSICodeManager.setCustomCursorPosition(x + paddingLeftOrRight, y + paddintTopOrBotton + l);
 
-                for (int i = 0; i < msgLength; i++) {
+                for (int i = 0; i < msgsLines[l].length(); i++) {
 
                     System.out.print(msgsLines[l].charAt(i));
                     try {
