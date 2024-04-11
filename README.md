@@ -1,8 +1,11 @@
 # Gourp Members
-1-Shabnam
-2-Geraldo
-3-Henrique
-4-Angelo
+<ol>
+  <li>Shabnam</li>
+  <li>Geraldo</li>
+  <li>Henrique</li>
+  <li>Angelo</li>
+</ol>
+
 
 # Canadian Citizenship Game – Java Project 
 This game was developed as the final project of the Fundamental Programin at first semester on Georgian@ILAC.
@@ -19,7 +22,7 @@ Great, [Character Name]! Here are your starting attributes:
 
 
 
-# Character os the game
+# Character of the game
 
 ## Main Character
 
@@ -32,13 +35,13 @@ Great, [Character Name]! Here are your starting attributes:
 ## IRCC Immigration
 
 
-<imt srg="./images/monster1_1"/>
+<imt srg="./images/monster2_1"/>
 
 ## Big Headed from College
 
 
-<imt srg="./images/monster1_1"/>
+<imt srg="./images/monster3_1"/>
 
 ## Final Boss - Canadian Citzenship
 
-<imt srg="./images/monster1_1"/>
+<imt srg="./images/monster4_1"/>
