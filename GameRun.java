@@ -21,35 +21,36 @@ public class GameRun {
                         "monster4_monster_frame2_RGB.txt", "monster4_monster_frame3_RGB.txt",
                         "monster4_monster_frame3_RGB.txt");
 
-        static GameCharacter[] monstersSlashLevels = { mosnter1, mosnter2, mosnter3, mosnter4, mosnter1, mosnter2 };
+        static GameCharacter[] monstersSlashLevels = { mosnter1, mosnter2, mosnter3, mosnter4 };
 
         public static void main(String[] args) {
+                DisplayManager.init(60, 200);
+                int meanY = (DisplayManager.height / 2) - 5;
+                int meanX = (DisplayManager.width / 2) - 25;
 
                 try {
-
-                        DisplayManager.init(60, 200);
 
                         hero.loadImagesCharacter();
                         for (GameCharacter x : monstersSlashLevels)
                                 x.loadImagesCharacter();
 
                         ANSICodeManager.enableCursorIndicator();
-                        MessageBox msg = DisplayManager.messageBox("Please enter your character's name:",
-                                        DisplayManager.height / 2, DisplayManager.width / 2);
-
+                        MessageBox msgCenterScreen = DisplayManager.messageBox("Please enter your character's name:",
+                                        meanY, meanX);
                         String anwser = "";
                         anwser += scanner.nextLine();
                         hero.setCharacterName(anwser);
-                        msg.clean();
-                        msg = DisplayManager.messageBox("Please enter your nationality:", DisplayManager.height / 2,
-                                        DisplayManager.width / 2);
+                        msgCenterScreen.clean();
 
+                        msgCenterScreen = DisplayManager.messageBox("Please enter your nationality:",
+                                        meanY,
+                                        meanX);
                         anwser = "";
                         anwser += scanner.nextLine();
                         hero.setCountry(anwser);
-                        msg.clean();
+                        msgCenterScreen.clean();
 
-                        msg = DisplayManager.messageBox(
+                        msgCenterScreen = DisplayManager.messageBox(
                                         "Great, " + hero.getCharacterName() + "! Here are your starting attribsutes:" +
                                                         "\n - Life Points:[100] (These will keep you alive in battles)"
                                                         +
@@ -59,117 +60,329 @@ public class GameRun {
                                                         "\n    Voluntary Job (restores 10 points)" +
                                                         "\n    Part-time Job (restores 20 points)" +
                                                         "\n    Fulltime Job (restores 30 points)" +
-                                                        "\n" +
-                                                        "\nPress enter to continue",
-                                        DisplayManager.height / 2, DisplayManager.width / 2);
-                        anwser = "";
-                        anwser += scanner.nextLine();
-                        msg.clean();
-                        msg = DisplayManager.messageBox(
+                                                        "\n\nPress enter to continue",
+                                        meanY, meanX);
+
+                        scanner.nextLine();
+                        msgCenterScreen.clean();
+
+                        msgCenterScreen = DisplayManager.messageBox(
                                         "With courage and strategy, you'll navigate through the trials ahead." +
                                                         "\nAre you ready to start" +
                                                         "\nyour journey? (\033[4;31mYes\033[0m/No)",
-                                        DisplayManager.height / 2, DisplayManager.width / 2);
-                        anwser = "";
-                        anwser += scanner.nextLine();
-                        msg.clean();
+                                        meanY, meanX);
+                        scanner.nextLine();
+                        msgCenterScreen.clean();
 
                         if (anwser.equalsIgnoreCase("no")) {
 
-                                msg = DisplayManager.messageBox(
+                                msgCenterScreen = DisplayManager.messageBox(
                                                 "\033[31mGAME OVER\n\n\nYou've being deported to " + hero.getCountry()
                                                                 + "\033[0m",
-                                                DisplayManager.height / 2, DisplayManager.width / 2);
+                                                meanY, meanX);
 
                         } else {
 
-                                GameCharacter imigrante = GameRun.hero;
+                                GameCharacter mainCharacter = GameRun.hero;
                                 GameCharacter monster;
-                                int level = 0;
+                                int levelCounter = 0;
 
-                                boolean timeToHeroPlay = true;
-                                int heroPositionY = 60 - 40;
+                                boolean timeToMainCharacterPlay = true;
+                                int heroPositionY = DisplayManager.height - 40;
                                 int heroPositionX = 30;
                                 int monsterPositionY = 10;
                                 int monsterPositionX = 150;
+                                MessageBox msgTitleBattleScreen = null;
 
-                                while (level < monstersSlashLevels.length) {
-                                        monster = GameRun.monstersSlashLevels[level];
-                                        msg = DisplayManager.messageBox(
-                                                        "Battle " + String.valueOf(level + 1) + "/"
+                                // start battles while level counter is lower then the number os levels and the
+                                // main character is greater then zero
+                                while (levelCounter < monstersSlashLevels.length && hero.getCharacterLife() > 0) {
+                                        monster = GameRun.monstersSlashLevels[levelCounter];
+
+                                        // this check is to prevent the null point exception on the firt turn
+                                        if (msgTitleBattleScreen != null)
+                                                msgTitleBattleScreen.clean();
+
+                                        msgTitleBattleScreen = DisplayManager.messageBox(
+                                                        "Battle " + String.valueOf(levelCounter + 1) + "/"
                                                                         + String.valueOf(
                                                                                         monstersSlashLevels.length),
                                                         4,
-                                                        DisplayManager.width / 2);
-                                        imigrante.updatePosition(heroPositionX, heroPositionY);
+                                                        (DisplayManager.width / 2) - 10);
+
+                                        mainCharacter.updatePosition(heroPositionX, heroPositionY);
                                         monster.updatePosition(monsterPositionX, monsterPositionY);
 
-                                        msg = DisplayManager.messageBox(
-                                                        "Your journey begins now," + hero.getCharacterName() + "!" +
-                                                                        "\nAs you step onto the path of trials, your resolve to become\n a Canadian citizen will be tested."
-                                                                        +
-                                                                        "\nAhead lies your first challenge, It's time to prove your strength.\n\nCIC Wolf stands in your way",
-                                                        DisplayManager.height / 2, (DisplayManager.width / 2) - 35);
+                                        switch (levelCounter) {
+                                                case 0:
+                                                        msgCenterScreen = DisplayManager.messageBox(
+                                                                        "Your journey begins now,"
+                                                                                        + hero.getCharacterName()
+                                                                                        + "!" +
+                                                                                        "\nAs you step onto the path of trials, your resolve to become"
+                                                                                        +
+                                                                                        "\n a Canadian citizen will be tested."
+                                                                                        +
+                                                                                        "\nAhead lies your first challenge, It's time to prove your strength."
+                                                                                        +
+                                                                                        "\n\n"
+                                                                                        + monster.getCharacterName()
+                                                                                        + " stands in your way" +
+                                                                                        "\n\nPress enter to continue",
+                                                                        meanY,
+                                                                        (DisplayManager.width / 2) - 35);
+                                                        break;
 
-                                        anwser += scanner.nextLine();
-                                        msg.clean();
+                                                case 1:
+                                                        msgCenterScreen = DisplayManager.messageBox(
+                                                                        "With CIC Wolf defeated, you advance to the next stage of your journey."
+                                                                                        +
+                                                                                        "\nEach victory brings you closer to your goal of Canadian citizenship."
+                                                                                        +
+                                                                                        "\nYou've successfully navigated the initial trial, "
+                                                                                        +
+                                                                                        "\nproving your strength and determination."
+                                                                                        +
+                                                                                        "\n\nNow, you're facing a new enemy IRCC Immigration."
+                                                                                        +
+                                                                                        "\n\nPrepare yourself, "
+                                                                                        + mainCharacter.getCharacterName()
+                                                                                        + ". The next challenge awaits."
+                                                                                        +
+                                                                                        "\n\nPress enter to continue",
 
+                                                                        meanY,
+                                                                        (DisplayManager.width / 2) - 35);
+                                                        break;
+
+                                                case 2:
+                                                        msgCenterScreen = DisplayManager.messageBox(
+                                                                        "With your Immigrational status secured," +
+                                                                                        "\nyou move onto proving your skills and knowledge in a"
+                                                                                        +
+                                                                                        "\nCanadian educational institution."
+                                                                                        +
+                                                                                        "\nTest your skills against Big Headed from College."
+                                                                                        +
+                                                                                        "\n\nPress enter to continue",
+
+                                                                        meanY,
+                                                                        (DisplayManager.width / 2) - 35);
+                                                        break;
+
+                                                case 3:
+                                                        msgCenterScreen = DisplayManager.messageBox(
+                                                                        "You hear a voice echoing with the depth of lakes and the"
+                                                                                        +
+                                                                                        "\nwhisper of the northern winds."
+                                                                                        +
+                                                                                        "\n\n \"Welcome, brave soul. You've journeyed far and faced"
+                                                                                        +
+                                                                                        "\ntrials with courage and wisdom."
+                                                                                        +
+                                                                                        "\nBut to truly embrace the mantle of Canadian citizenship,"
+                                                                                        +
+                                                                                        "\nyou must prove your understanding and commitment to the"
+                                                                                        +
+                                                                                        "\nvalues that bind us as a nation."
+                                                                                        +
+                                                                                        "\nRespect for the rule of law, the rights and freedoms of all,"
+                                                                                        +
+                                                                                        "\nand the desire to contribute to a society that is"
+                                                                                        +
+                                                                                        "\ninclusive and ever-thriving.\""
+                                                                                        +
+                                                                                        "\n\nAre you prepared to take this final step and defeat me, as your Final Boss?"
+                                                                                        +
+                                                                                        "\n\nPress enter to continue",
+
+                                                                        meanY,
+                                                                        (DisplayManager.width / 2) - 35);
+                                                        break;
+
+                                        }
+
+                                        scanner.nextLine();
+                                        msgCenterScreen.clean();
+                                        // now beggins the especific battle from each leve
                                         do {
+                                                // the main character always start the batle
+                                                if (timeToMainCharacterPlay) {
 
-                                                if (timeToHeroPlay) {
-
-                                                        msg = DisplayManager.messageBox(
-                                                                        "Press enter to " + imigrante.getCharacterName()
-                                                                                        + " Play",
+                                                        msgCenterScreen = DisplayManager.messageBox(
+                                                                        "Press enter to " + mainCharacter
+                                                                                        .getCharacterName()
+                                                                                        + "\nRoll the dices and Play " +
+                                                                                        "\n\nEnter o to chose a recovery item",
                                                                         20,
-                                                                        (DisplayManager.width / 2) - 10);
+                                                                        (DisplayManager.width / 2) - 40);
 
                                                 } else {
 
-                                                        msg = DisplayManager.messageBox(
+                                                        msgCenterScreen = DisplayManager.messageBox(
                                                                         "Press enter to " + monster.getCharacterName()
-                                                                                        + " Play",
+                                                                                        + "\nRoll the dices and Play",
                                                                         20,
                                                                         (DisplayManager.width / 2) - 10);
 
                                                 }
                                                 anwser = "";
                                                 anwser += scanner.nextLine();
+                                                msgCenterScreen.clean();
+                                                // enter the letter o to enter the option mode
+                                                if (anwser.equalsIgnoreCase("o") && timeToMainCharacterPlay) {
 
-                                                if (timeToHeroPlay) {
+                                                        msgCenterScreen = DisplayManager.messageBox(
+                                                                        "Recovery Items: " +
+                                                                                        "\n1-Voluntary Job (restores 10 points)"
+                                                                                        +
+                                                                                        "\n2-Part-time Job (restores 20 points)"
+                                                                                        +
+                                                                                        "\n3-Full-time Job (restores 30 points)"
+                                                                                        +
+                                                                                        "\n\nPress enter to continue",
+                                                                        20,
+                                                                        (DisplayManager.width / 2) - 10);
 
-                                                        monster.decreaseLife(random.nextInt(0,
-                                                                        imigrante.getCharacterAttack()));
+                                                        anwser = "";
+                                                        anwser += scanner.nextLine();
+                                                        if (anwser.equalsIgnoreCase("1")
+                                                                        || anwser.equalsIgnoreCase("2")
+                                                                        || anwser.equalsIgnoreCase("3")) {
+
+                                                                if (anwser.equalsIgnoreCase("1")) {
+                                                                        mainCharacter.setCharacterLife(
+                                                                                        mainCharacter.getCharacterLife()
+                                                                                                        + 10);
+                                                                } else if (anwser.equalsIgnoreCase("2")) {
+                                                                        mainCharacter.setCharacterLife(
+                                                                                        mainCharacter.getCharacterLife()
+                                                                                                        + 20);
+                                                                } else if (anwser.equalsIgnoreCase("3")) {
+                                                                        mainCharacter.setCharacterLife(
+                                                                                        mainCharacter.getCharacterLife()
+                                                                                                        + 30);
+                                                                }
+                                                        }
+
+                                                        mainCharacter.updatePosition(heroPositionX,
+                                                                        heroPositionY);
+                                                        msgCenterScreen.clean();
                                                 } else {
+                                                        if (timeToMainCharacterPlay) {
 
-                                                        imigrante.decreaseLife(random.nextInt(0,
-                                                                        monster.getCharacterAttack()));
+                                                                // rolling the dice
+                                                                int diceValue = random.nextInt(1, 6);
+                                                                int totalAttack = diceValue
+                                                                                + mainCharacter.getCharacterAttack();
+                                                                int demage = monster.decreaseLife(totalAttack);
+
+                                                                msgCenterScreen = DisplayManager.messageBox(
+                                                                                "Your dice roll adds  \033[31m"
+                                                                                                + String.valueOf(
+                                                                                                                diceValue)
+                                                                                                + "\033[0m  to your attack, \ntotaling \033[31m"
+                                                                                                + String.valueOf(
+                                                                                                                totalAttack)
+                                                                                                + "\033[0m." +
+                                                                                                "\nYour attack breaks through,\n dealing  \033[31m "
+                                                                                                + String.valueOf(demage)
+                                                                                                + " \033[0m damage to "
+                                                                                                + monster.getCharacterName()
+                                                                                                +
+                                                                                                "\n\nPress enter to continue",
+                                                                                20,
+                                                                                (DisplayManager.width / 2) - 40);
+
+                                                        } else {
+                                                                // rolling the dice
+                                                                int diceValue = random.nextInt(1, 6);
+                                                                int totalAttack = diceValue
+                                                                                + monster.getCharacterAttack();
+                                                                int demage = mainCharacter.decreaseLife(totalAttack);
+
+                                                                msgCenterScreen = DisplayManager.messageBox(
+                                                                                monster.getCharacterName()
+                                                                                                + " roll adds \033[31m"
+                                                                                                + String.valueOf(
+                                                                                                                diceValue)
+                                                                                                + "\033[0m to your attack, \ntotaling \033[31m"
+                                                                                                + String.valueOf(
+                                                                                                                totalAttack)
+                                                                                                + "\033[0m.\n"
+                                                                                                +
+                                                                                                "Your attack breaks through,\n dealing  \033[31m"
+                                                                                                + String.valueOf(demage)
+                                                                                                + "\033[0m damage to "
+                                                                                                + mainCharacter.getCharacterName()
+                                                                                                +
+                                                                                                "\n\nPress enter to continue",
+                                                                                20,
+                                                                                (DisplayManager.width / 2) - 10);
+                                                        }
+                                                        mainCharacter.updatePosition(heroPositionX,
+                                                                        heroPositionY);
+                                                        monster.updatePosition(monsterPositionX,
+                                                                        monsterPositionY);
+                                                        // this alternate between who gonna plays next
+                                                        timeToMainCharacterPlay = !timeToMainCharacterPlay;
+
+                                                        scanner.nextLine();
+                                                        msgCenterScreen.clean();
                                                 }
+                                                // while either monster or main character has positive life, keep going
+                                                // to another turn.
+                                        } while (monster.getCharacterLife() > 0
+                                                        && mainCharacter.getCharacterLife() > 0);
 
-                                                imigrante.updatePosition(heroPositionX, heroPositionY);
-                                                monster.updatePosition(monsterPositionX, monsterPositionY);
-
-                                                timeToHeroPlay = !timeToHeroPlay;
-
-                                                msg.clean();
-
-                                        } while (monster.getCharacterLife() > 0 && imigrante.getCharacterLife() > 0);
-                                        // change of level or game orver
-                                        if (imigrante.getCharacterLife() > 0) {
-                                                imigrante.updateWinningPosition();
-                                        } else {
-                                                msg = DisplayManager.messageBox(
-                                                                "GAME OVER",
+                                        // change of level or game over
+                                        // if the main character lose, it is game over
+                                        if (mainCharacter.getCharacterLife() > 0) {
+                                                mainCharacter.updateWinningPosition();
+                                                msgCenterScreen = DisplayManager.messageBox(
+                                                                "Congratulations! " + monster.getCharacterName()
+                                                                                + "’s life points have dropped to 0."+
+                                                                                "\nYou've won this battle and can"
+                                                                                +
+                                                                                "\nmove forward on your journey." +
+                                                                                "\n\nPress Enter to continue....",
                                                                 20,
-                                                                (DisplayManager.width / 2) - 10);
+                                                                (DisplayManager.width / 2) - 40);
+
+                                                // always the main character will be the firt to play on every turn
+                                                timeToMainCharacterPlay = true;
+                                                // increase the level
+                                                levelCounter++;
+
+                                                scanner.nextLine();
+                                                msgCenterScreen.clean();
 
                                         }
-                                        timeToHeroPlay = true;
-                                        anwser = "";
-                                        anwser += scanner.nextLine();
-                                        level++;
-                                }
+                                        // if the mosnter loses it goes to another turn on the next level.
+                                        else {
+                                                msgCenterScreen = DisplayManager.messageBox(
+                                                                "Unfortunately, your life points have reached 0." +
+                                                                                "\n\nIt's GAME OVER." +
+                                                                                "\n\n But don't lose hope; every path has its setbacks."
+                                                                                +
+                                                                                "\n\n Would you like to try again? (Yes/\033[4;31mNo\033[0m)",
+                                                                20,
+                                                                (DisplayManager.width / 2) - 40);
+                                                anwser = "";
+                                                anwser += scanner.nextLine();
+                                                msgCenterScreen.clean();
 
+                                                if (anwser.equalsIgnoreCase("yes")) {
+                                                        // reset levelCounter to first level, level 0
+                                                        levelCounter = 0;
+                                                        // reset life of all characters
+                                                        mainCharacter.setCharacterLife(50);
+                                                        for (GameCharacter character : GameRun.monstersSlashLevels) {
+                                                                character.setCharacterLife(50);
+                                                        }
+                                                }
+                                        }
+                                }
                         }
 
                         while (true) {
@@ -182,7 +395,8 @@ public class GameRun {
                         }
 
                 } catch (Exception x) {
-                        System.out.println(x.getMessage());
+                        // System.out.println(x.getMessage());
+                        throw x;
                 }
         }
 

@@ -1,4 +1,6 @@
 import java.util.Random;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class MessageBox {
     private int x;
@@ -6,7 +8,9 @@ public class MessageBox {
     private int height;
     private int width;
     private String message;
-    private static int maxTimeToDigitDelay = 100;
+   
+
+    private static int maxTimeToDigitDelay = 50;
     private static Random random = new Random();
     private int paddingLeftOrRight = 3;
     private int paddintTopOrBotton = 2;
@@ -19,9 +23,26 @@ public class MessageBox {
         this.message = message;
     }
 
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
     public void clean() {
         
-        String[] msgsLines = this.message.split("\n");
+        String textWithANSI = this.message;//"you step onto the \033[31mpath\033[0m of trials, your resolve ";
+
+        Pattern pattern = Pattern.compile("\033\\[[0-9;]+m");
+        Matcher matcher = pattern.matcher(textWithANSI);
+        String textWithoutANSI = matcher.replaceAll("");
+
+        
+        String[] msgsLines = textWithoutANSI.split("\n");
+
+
         int maxLength = 0;
         for (String linha : msgsLines) {
             if (linha.length() > maxLength) {
@@ -39,20 +60,30 @@ public class MessageBox {
             }
         }
     }
-
+    public void draw(){
+        draw(false);
+    }
     public void draw(boolean withDelay) {
 
         ANSICodeManager.resetAllStyleAndColorMode();
 
-        String[] msgsLines = this.message.split("\n");
+        String textWithANSI = this.message;//"you step onto the \033[31mpath\033[0m of trials, your resolve ";
+
+        Pattern pattern = Pattern.compile("\033\\[[0-9;]+m");
+        Matcher matcher = pattern.matcher(textWithANSI);
+        String textWithoutANSI = matcher.replaceAll("");
+
+        
+        String[] msgsLines2 = textWithoutANSI.split("\n");
         int maxLength = 0;
-        for (String linha : msgsLines) {
+        for (String linha : msgsLines2) {
             if (linha.length() > maxLength) {
                 maxLength = linha.length();
             }
         }
+        String[] msgsLines = this.message.split("\n");
         int msgLength = maxLength;// this.message.length();
-        int legnthBorderTopAndButton = msgLength + paddingLeftOrRight * 2;
+        int legnthBorderTopAndButton = msgLength + paddingLeftOrRight *2;
         // int boxHight = 4;
 
         // System.out.printf("%c[40m ", ANSICodeManager.escCode);

@@ -14,35 +14,25 @@ import java.util.Random;
 public class GameCharacter {
 
     private String characterName;
-
     private String country;
-
-    private int characterLife;
-
-    public int getCharacterLife() {
-        return characterLife;
-    }
-
-    public void setCharacterLife(int characterLife) {
-        this.characterLife = characterLife;
-    }
-
-    private int characterAttack;
-
-    private int characterDefense;
-
+    private int characterLife=30;
+    private int characterAttack=20;
+    private int characterDefense=8;
     private int initX;
-
     private int initY;
     private String fileName1;
     private String fileName2;
-    private String fileName3;
-    private String fileName4;
+    private String fileName3Defeated;
+    private String fileName4Won;
+    private String priorBattleMessage;
+    private String endBattleMessage;
 
-    private int[][][] image1;
-    private int[][][] image2;
-    private int[][][] image3Defeated;
-    private int[][][] image4Won;
+   
+
+    private int[][][] image1 = new int[][][] {};
+    private int[][][] image2 = new int[][][] {};
+    private int[][][] image3Defeated = new int[][][] {};
+    private int[][][] image4Won = new int[][][] {};
 
     private static String defaultDataArrayFolder = "arrayData/";
 
@@ -54,17 +44,23 @@ public class GameCharacter {
 
         this.fileName1 = fileName1;
         this.fileName2 = fileName2;
-        this.fileName3 = fileName3;
-        this.fileName4 = fileName4;
+        this.fileName3Defeated = fileName3;
+        this.fileName4Won = fileName4;
         this.characterName = characterName;
-        this.characterLife = 50;
-        this.characterAttack = 20;
-        this.characterDefense = 8;
-        this.image1 = new int[][][] {};
-        this.image2 = new int[][][] {};
-        this.image3Defeated = new int[][][] {};
-        this.image4Won = new int[][][] {};
+    }
+    public int getCharacterLife() {
+        return characterLife;
+    }
 
+    public void setCharacterLife(int characterLife) {
+        this.characterLife = characterLife;
+    }
+    public String getPriorBattleMessage() {
+        return priorBattleMessage;
+    }
+
+    public void setPriorBattleMessage(String initialMessage) {
+        this.priorBattleMessage = initialMessage;
     }
 
     public String getCharacterName() {
@@ -94,8 +90,8 @@ public class GameCharacter {
     public void loadImagesCharacter() {
         this.image1 = GameCharacter.readFileIntoArray(fileName1);
         this.image2 = GameCharacter.readFileIntoArray(fileName2);
-        this.image3Defeated = GameCharacter.readFileIntoArray(fileName3);
-        this.image4Won = GameCharacter.readFileIntoArray(fileName4);
+        this.image3Defeated = GameCharacter.readFileIntoArray(fileName3Defeated);
+        this.image4Won = GameCharacter.readFileIntoArray(fileName4Won);
     }
 
     public void drawCharacter1OnTheScreen(int x, int y) {
@@ -104,14 +100,17 @@ public class GameCharacter {
         this.drawCharacter1OnTheScreen();
     }
 
-    public void decreaseLife(int attacke) {
+    public int decreaseLife(int attacke) {
         int loseLife = characterDefense - attacke;
         characterLife += loseLife > 0 ? 0 : loseLife;
+
+        return loseLife;
     }
 
     public void drawCharacter1OnTheScreen(int[][][] randomArray){
 
         DisplayManager.printCharacter_RGB(randomArray, initY, initX);
+        this.characterLife=this.characterLife>0?this.characterLife:0;
         DisplayManager.printAtPosition(
                 getCharacterName() + ":(" + String.valueOf(characterLife) + ")" + "#".repeat(this.characterLife / 10),
                 initX, initY);
