@@ -2,48 +2,74 @@ import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-
 /**
  * This classe is the blue print to all box messages printed on the terminal.
+ * Also, this class holds methods that will properly help either draw the
+ * message on the screen and also clean the previous occuped area on the screen.
  * 
  * @author shabnam, geraldo, henrique, angelo
  */
 public class MessageBox {
+    /**
+     * this property holds the X position on the screen to position the message box
+     */
     private int x;
+    /**
+     * this property holds the Y position on the screen to position the message box
+     */
     private int y;
-    private int height;
-    private int width;
-    private String message;
-   
 
+    /**
+     * the height of the box that will surrend the text message
+     */
+    private int height;
+    /**
+     * The message that will be displayed
+     */
+    private String message;
+
+    /**
+     * this represent the amont time will random to display each character on the screen
+     */
     private static int maxTimeToDigitDelay = 50;
     private static Random random = new Random();
     private int paddingLeftOrRight = 3;
     private int paddintTopOrBotton = 2;
 
-    public MessageBox(int x, int y, int height, int width, String message) {
+    public MessageBox(int x, int y, int height, String message) {
         this.x = x;
         this.y = y;
         this.height = height;
-        this.width = width;
         this.message = message;
     }
 
+    /**
+     * Return the message attibuted to the object
+     * 
+     * @return String
+     */
     public String getMessage() {
         return message;
     }
 
+    /**
+     * Set the message attributed to the object
+     * 
+     * @param message
+     */
     public void setMessage(String message) {
         this.message = message;
     }
 
+    /**
+     * This method is responsable to clean the area previus used to display the
+     * message
+     */
     public void clean() {
-        
+
         String textWithoutANSI = getStringWithOutANSIScapeCode();
 
-        
         String[] msgsLines = textWithoutANSI.split("\n");
-
 
         int maxLength = 0;
         for (String linha : msgsLines) {
@@ -51,10 +77,10 @@ public class MessageBox {
                 maxLength = linha.length();
             }
         }
-        int msgLength = maxLength;// this.message.length();
 
-        int legnthBorderTopAndButton = msgLength + paddingLeftOrRight * 2;
+        int legnthBorderTopAndButton = maxLength + paddingLeftOrRight * 2;
         ANSICodeManager.set256TextBackGroundColor(40);
+        height += msgsLines.length;
         for (int iy = y; iy <= height + y; iy++) {
             for (int ix = x; ix <= legnthBorderTopAndButton + x; ix++) {
                 ANSICodeManager.setCustomCursorPosition(ix, iy);
@@ -62,14 +88,22 @@ public class MessageBox {
             }
         }
     }
-   
+
+    /**
+     * Method responsable to efectively draw a proper message on the screen
+     * 
+     * @param withDelay when set to true, the message will be displayed one char at
+     *                  a time with a random delay between each character
+     */
     public void draw(boolean withDelay) {
 
         ANSICodeManager.resetAllStyleAndColorMode();
 
         String textWithoutANSI = getStringWithOutANSIScapeCode();
 
-        
+        /**
+         * this code give the ability to write texts with the special character to break lines
+         */
         String[] msgsLines2 = textWithoutANSI.split("\n");
         int maxLength = 0;
         for (String linha : msgsLines2) {
@@ -77,10 +111,9 @@ public class MessageBox {
                 maxLength = linha.length();
             }
         }
-        
+
         String[] msgsLines = this.message.split("\n");
-        int msgLength = maxLength;// this.message.length();
-        int legnthBorderTopAndButton = msgLength + paddingLeftOrRight *2;
+        int legnthBorderTopAndButton = maxLength + paddingLeftOrRight * 2;
 
         // draw borders top and button of the box
         height += msgsLines.length;
@@ -102,7 +135,6 @@ public class MessageBox {
             ANSICodeManager.setCustomCursorPosition(x + legnthBorderTopAndButton, i);
             ANSICodeManager.printOneSpace();
         }
-
 
         ANSICodeManager.resetAllStyleAndColorMode();
         if (withDelay) {
@@ -132,6 +164,11 @@ public class MessageBox {
 
     }
 
+    /**
+     * Will remove all ANSI Scape codes from the string.
+     * @return String without containing ANSI scape codes as long it wont be printed
+     *         on the screen it can be count on the lenght of the message
+     */
     private String getStringWithOutANSIScapeCode() {
         String textWithANSI = this.message;
 

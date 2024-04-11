@@ -1,7 +1,6 @@
+
 /**
- * THIS IS THE BLUEPRINT CLASS FOR THE MAIN CHARACTER WHICH IS GOING TO BE PARTIALLY CUSTOMIZED BY THE USER
-* IN THIS CLASS ALL ATTRIBUTES WILL BE DECLARED AND METHODS WILL BE SET FOR BATTLES 
-* ALSO RANDOM VALUES WILL BE ADDED TO ATTRIBUTES IN ORDER TO DEVELOP COMBAT MOMENTS
+ * this class will represent each character on the game.
 * @author Angelo Carlotto, Geraldo Beiro, Henrique, Shabnam.
 * Date: Mar 16th, 2024.
 * Time: 9:30PM
@@ -15,30 +14,57 @@ public class GameCharacter {
 
     private String characterName;
     private String country;
-    private int characterLife=30;
-    private int characterAttack=20;
-    private int characterDefense=8;
+    public static int defaultAmontOfLife=30;
+    private int characterLife = defaultAmontOfLife;
+    private int characterAttack = 20;
+    private int characterDefense = 8;
+    /**
+     * holds the initial X position of the character on the screen
+     */
     private int initX;
+    /**
+     * holds the initial Y position of the character on the screen
+     */
     private int initY;
+
+    /**
+     * The file names for each file
+     */
     private String fileName1;
     private String fileName2;
     private String fileName3Defeated;
     private String fileName4Won;
 
-   
-
+    /**
+     * this array 3x3 will hold the first image of the character
+     */
     private int[][][] image1 = new int[][][] {};
+
+    /**
+     * this array 3x3 will hold the second image of the character
+     */
     private int[][][] image2 = new int[][][] {};
+
+    /**
+     * this array 3x3 will hold the defeted image of the character
+     */
     private int[][][] image3Defeated = new int[][][] {};
+    
+    /**
+     * this array 3x3 will hold the winning image of the character
+     */
     private int[][][] image4Won = new int[][][] {};
 
+    /**
+     * where the program can find the files imges for the characters
+     */
     private static String defaultDataArrayFolder = "arrayData/";
 
-    public GameCharacter(String fileName1, String fileName2, String fileName3,String fileName4) {
-        this("", fileName1, fileName2, fileName3,fileName4);
+    public GameCharacter(String fileName1, String fileName2, String fileName3, String fileName4) {
+        this("", fileName1, fileName2, fileName3, fileName4);
     }
 
-    public GameCharacter(String characterName, String fileName1, String fileName2, String fileName3,String fileName4) {
+    public GameCharacter(String characterName, String fileName1, String fileName2, String fileName3, String fileName4) {
 
         this.fileName1 = fileName1;
         this.fileName2 = fileName2;
@@ -46,10 +72,17 @@ public class GameCharacter {
         this.fileName4Won = fileName4;
         this.characterName = characterName;
     }
+
+    /**
+     * @return int
+     */
     public int getCharacterLife() {
         return characterLife;
     }
 
+    /**
+     * @param characterLife
+     */
     public void setCharacterLife(int characterLife) {
         this.characterLife = characterLife;
     }
@@ -98,14 +131,15 @@ public class GameCharacter {
         return loseLife;
     }
 
-    public void drawCharacter1OnTheScreen(int[][][] randomArray){
+    public void drawCharacter1OnTheScreen(int[][][] randomArray) {
 
         DisplayManager.printCharacter_RGB(randomArray, initY, initX);
-        this.characterLife=this.characterLife>0?this.characterLife:0;
+        this.characterLife = this.characterLife > 0 ? this.characterLife : 0;
         DisplayManager.printAtPosition(
                 getCharacterName() + ":(" + String.valueOf(characterLife) + ")" + "#".repeat(this.characterLife / 10),
                 initX, initY);
     }
+
     public void drawCharacter1OnTheScreen() {
         Random randomAux = new Random();
         int[][][] randomArray = characterLife <= 0 ? image3Defeated : randomAux.nextBoolean() ? image1 : image2;

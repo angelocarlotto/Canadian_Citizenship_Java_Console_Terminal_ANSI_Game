@@ -26,13 +26,27 @@ public class GameRun {
                         "monster4_monster_frame2_RGB.txt", "monster4_monster_frame3_RGB.txt",
                         "monster4_monster_frame3_RGB.txt");
 
+        /**
+         * this array will hold all the mosnters. Also will help the code understand how
+         * many levels there is on the game
+         * 
+         */
         static GameCharacter[] monstersSlashLevels = { mosnter1, mosnter2, mosnter3, mosnter4 };
 
+        /**
+         * this array tell us how many recovery items there is on the game
+         */
         static String[] recoveryItemsDefault = new String[] { "1-Voluntary Job (restores 10 points)",
                         "2-Part-time Job (restores 20 points)",
                         "3-Full-time Job (restores 30 points)" };
+        /**
+         * this array will help us understand which item was used or not
+         */
         static boolean[] recoveryItemUsed = new boolean[] { false, false, false };
 
+        /**
+         * @param args
+         */
         public static void main(String[] args) {
                 DisplayManager.init(60, 200);
                 int meanY = (DisplayManager.height / 2) - 5;
@@ -46,6 +60,7 @@ public class GameRun {
                                 characterAux.loadImagesCharacter();
 
                         ANSICodeManager.enableCursorIndicator();
+                        // ==================MESSAGE ASKING FOR THE PLAYER NAME====================
                         do {
                                 msgCenterScreen = DisplayManager.messageBox("Please enter your character's name:",
                                                 meanY, meanX);
@@ -54,7 +69,7 @@ public class GameRun {
                                 hero.setCharacterName(anwser);
                                 msgCenterScreen.clean();
                         } while (anwser.isEmpty());
-
+                        // ==================MESSAGE ASKING FOR THE PLAYER COUNTRY====================
                         do {
                                 msgCenterScreen = DisplayManager.messageBox("Please enter your nationality:",
                                                 meanY,
@@ -65,6 +80,7 @@ public class GameRun {
                                 msgCenterScreen.clean();
                         } while (anwser.isEmpty());
 
+                        // ==================MESSAGE EXPLANING THE GAME====================
                         msgCenterScreen = DisplayManager.messageBox(
                                         "Great, " + hero.getCharacterName() + "! Here are your starting attribsutes:" +
                                                         "\n - Life Points:[100] (These will keep you alive in battles)"
@@ -76,29 +92,34 @@ public class GameRun {
                                                         "\n    Part-time Job (restores 20 points)" +
                                                         "\n    Fulltime Job (restores 30 points)" +
                                                         "\n\nPress enter to continue",
-                                        meanY, meanX,true);
+                                        meanY, meanX, true);
 
                         scanner.nextLine();
                         msgCenterScreen.clean();
 
+                        // ======================ENCOURAGE MESSAGE BEFORE THE BEGINING OF THE
+                        // GAME================
                         msgCenterScreen = DisplayManager.messageBox(
                                         "With courage and strategy, you'll navigate through the trials ahead." +
                                                         "\nAre you ready to start" +
-                                                        "\nyour journey? (" + ANSICodeManager.buildRedText("Yes") + "/No)"
+                                                        "\nyour journey? (" + ANSICodeManager.buildRedText("Yes")
+                                                        + "/No)"
                                                         +
                                                         "\n\nPress enter to continue",
-                                        meanY, meanX,true);
+                                        meanY, meanX, true);
                         anwser = "";
                         anwser = scanner.nextLine();
                         msgCenterScreen.clean();
 
                         if (anwser.equalsIgnoreCase("no")) {
-                                
-                                msgCenterScreen = DisplayManager.messageBox(ANSICodeManager.buildRedText( "GAME OVER!!!\n\n\nYou've being deported to " + hero.getCountry()),
+                                // ==================THE PLAYER CHOOSE TO DO NOT PLAY THE GAME: WHAT A
+                                // BUMMER====================
+                                msgCenterScreen = DisplayManager.messageBox(ANSICodeManager.buildRedText(
+                                                "GAME OVER!!!\n\n\nYou've being deported to " + hero.getCountry()),
                                                 meanY, meanX);
 
                         } else {
-
+                                // =================THE GAME WILL BEGING PART 1=====================
                                 GameCharacter mainCharacter = GameRun.hero;
                                 GameCharacter monster;
                                 int levelCounter = 0;
@@ -110,6 +131,7 @@ public class GameRun {
                                 int monsterPositionX = 150;
                                 MessageBox msgTitleBattleScreen = null;
 
+                                // ==================THE GAME WILL BEGING PART 2====================
                                 // start battles while level counter is lower then the number os levels and the
                                 // main character is greater then zero
                                 while (levelCounter < monstersSlashLevels.length && hero.getCharacterLife() > 0) {
@@ -129,6 +151,8 @@ public class GameRun {
                                         mainCharacter.updatePosition(heroPositionX, heroPositionY);
                                         monster.updatePosition(monsterPositionX, monsterPositionY);
 
+                                        // ==================GET THE ESPECIFIC MESSAGE TO THE BEGINING OF EACH
+                                        // LEVEL====================
                                         switch (levelCounter) {
                                                 case 0:
                                                         msgCenterScreen = DisplayManager.messageBox(
@@ -146,12 +170,14 @@ public class GameRun {
                                                                                         + " stands in your way" +
                                                                                         "\n\nPress enter to continue",
                                                                         meanY,
-                                                                        (DisplayManager.width / 2) - 35,true);
+                                                                        (DisplayManager.width / 2) - 35, true);
                                                         break;
 
                                                 case 1:
                                                         msgCenterScreen = DisplayManager.messageBox(
-                                                                        "With "+ANSICodeManager.buildRedText("CIC Wolf")+" defeated, you advance to the next stage of your journey."
+                                                                        "With " + ANSICodeManager
+                                                                                        .buildRedText("CIC Wolf")
+                                                                                        + " defeated, you advance to the next stage of your journey."
                                                                                         +
                                                                                         "\nEach victory brings you closer to your goal of Canadian citizenship."
                                                                                         +
@@ -159,7 +185,10 @@ public class GameRun {
                                                                                         +
                                                                                         "\nproving your strength and determination."
                                                                                         +
-                                                                                        "\n\nNow, you're facing a new enemy "+ANSICodeManager.buildRedText("IRCC Immigration")+"."
+                                                                                        "\n\nNow, you're facing a new enemy "
+                                                                                        + ANSICodeManager.buildRedText(
+                                                                                                        "IRCC Immigration")
+                                                                                        + "."
                                                                                         +
                                                                                         "\n\nPrepare yourself, "
                                                                                         + mainCharacter.getCharacterName()
@@ -168,7 +197,7 @@ public class GameRun {
                                                                                         "\n\nPress enter to continue",
 
                                                                         meanY,
-                                                                        (DisplayManager.width / 2) - 35,true);
+                                                                        (DisplayManager.width / 2) - 35, true);
                                                         break;
 
                                                 case 2:
@@ -178,12 +207,15 @@ public class GameRun {
                                                                                         +
                                                                                         "\nCanadian educational institution."
                                                                                         +
-                                                                                        "\nTest your skills against "+ANSICodeManager.buildRedText("Big Headed from College")+"."
+                                                                                        "\nTest your skills against "
+                                                                                        + ANSICodeManager.buildRedText(
+                                                                                                        "Big Headed from College")
+                                                                                        + "."
                                                                                         +
                                                                                         "\n\nPress enter to continue",
 
                                                                         meanY,
-                                                                        (DisplayManager.width / 2) - 35,true);
+                                                                        (DisplayManager.width / 2) - 35, true);
                                                         break;
 
                                                 case 3:
@@ -208,18 +240,22 @@ public class GameRun {
                                                                                         +
                                                                                         "\ninclusive and ever-thriving.\""
                                                                                         +
-                                                                                        "\n\nAre you prepared to take this final step and defeat me, as your "+ANSICodeManager.buildRedText("Final Boss")+"?"
+                                                                                        "\n\nAre you prepared to take this final step and defeat me, as your "
+                                                                                        + ANSICodeManager.buildRedText(
+                                                                                                        "Final Boss")
+                                                                                        + "?"
                                                                                         +
                                                                                         "\n\nPress enter to continue",
 
                                                                         meanY,
-                                                                        (DisplayManager.width / 2) - 35,true);
+                                                                        (DisplayManager.width / 2) - 35, true);
                                                         break;
 
                                         }
 
                                         scanner.nextLine();
                                         msgCenterScreen.clean();
+                                        // ===================INITIATE THE BATTLE===================
                                         // now beggins the especific battle from each leve
                                         do {
                                                 // the main character always start the batle
@@ -367,6 +403,8 @@ public class GameRun {
                                                 mainCharacter.updateWinningPosition();
 
                                                 if (levelCounter < monstersSlashLevels.length - 2) {
+                                                        // ===================PLAYER WON LEVEL 1,2 and
+                                                        // 3===================
                                                         msgCenterScreen = DisplayManager.messageBox(
                                                                         "Congratulations! " + monster.getCharacterName()
                                                                                         + "’s life points have dropped to 0."
@@ -377,9 +415,9 @@ public class GameRun {
                                                                                         +
                                                                                         "\n\nPress Enter to continue....",
                                                                         20,
-                                                                        (DisplayManager.width / 2) - 40,true);
+                                                                        (DisplayManager.width / 2) - 40, true);
                                                 } else {
-
+                                                        // ===================PLAYER WON LEVEL 4===================
                                                         msgCenterScreen = DisplayManager.messageBox(
                                                                         "Congratulations! " + monster.getCharacterName()
                                                                                         + "’s life points have dropped to 0."
@@ -400,7 +438,7 @@ public class GameRun {
                                                                                         +
                                                                                         "\n\nPress Enter to continue....",
                                                                         20,
-                                                                        (DisplayManager.width / 2) - 40,true);
+                                                                        (DisplayManager.width / 2) - 40, true);
                                                 }
 
                                                 // always the main character will be the firt to play on every turn
@@ -415,6 +453,7 @@ public class GameRun {
                                         }
                                         // if the mosnter loses it goes to another turn on the next level.
                                         else {
+                                                // ===================PLAYER LOOSE===================
                                                 msgCenterScreen = DisplayManager.messageBox(
                                                                 "Unfortunately, your life points have reached 0." +
                                                                                 "\n\nIt's GAME OVER." +
@@ -437,9 +476,11 @@ public class GameRun {
                                                         recoveryItemUsed = new boolean[] { false, false, false };
 
                                                         // reset life of all characters
-                                                        mainCharacter.setCharacterLife(50);
+                                                        mainCharacter.setCharacterLife(
+                                                                        GameCharacter.defaultAmontOfLife);
                                                         for (GameCharacter character : GameRun.monstersSlashLevels) {
-                                                                character.setCharacterLife(50);
+                                                                character.setCharacterLife(
+                                                                                GameCharacter.defaultAmontOfLife);
                                                         }
                                                 }
                                         }
