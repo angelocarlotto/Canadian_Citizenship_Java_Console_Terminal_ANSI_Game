@@ -39,11 +39,7 @@ public class MessageBox {
 
     public void clean() {
         
-        String textWithANSI = this.message;//"you step onto the \033[31mpath\033[0m of trials, your resolve ";
-
-        Pattern pattern = Pattern.compile("\033\\[[0-9;]+m");
-        Matcher matcher = pattern.matcher(textWithANSI);
-        String textWithoutANSI = matcher.replaceAll("");
+        String textWithoutANSI = getStringWithOutANSIScapeCode();
 
         
         String[] msgsLines = textWithoutANSI.split("\n");
@@ -73,11 +69,7 @@ public class MessageBox {
 
         ANSICodeManager.resetAllStyleAndColorMode();
 
-        String textWithANSI = this.message;
-
-        Pattern pattern = Pattern.compile("\033\\[[0-9;]+m");
-        Matcher matcher = pattern.matcher(textWithANSI);
-        String textWithoutANSI = matcher.replaceAll("");
+        String textWithoutANSI = getStringWithOutANSIScapeCode();
 
         
         String[] msgsLines2 = textWithoutANSI.split("\n");
@@ -140,5 +132,14 @@ public class MessageBox {
         ANSICodeManager.setCustomCursorPosition(x + paddingLeftOrRight, y + paddintTopOrBotton + msgsLines.length);
         ANSICodeManager.resetAllStyleAndColorMode();
 
+    }
+
+    private String getStringWithOutANSIScapeCode() {
+        String textWithANSI = this.message;
+
+        Pattern pattern = Pattern.compile("\033\\[[0-9;]+m");
+        Matcher matcher = pattern.matcher(textWithANSI);
+        String textWithoutANSI = matcher.replaceAll("");
+        return textWithoutANSI;
     }
 }

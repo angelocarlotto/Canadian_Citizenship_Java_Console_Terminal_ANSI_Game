@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 /**
  * This class is responsable to run the game
+ * 
  * @author shabnam, geraldo, henrique, angelo
  */
 public class GameRun {
@@ -83,7 +84,8 @@ public class GameRun {
                         msgCenterScreen = DisplayManager.messageBox(
                                         "With courage and strategy, you'll navigate through the trials ahead." +
                                                         "\nAre you ready to start" +
-                                                        "\nyour journey? (\033[4;31mYes\033[0m/No)" +
+                                                        "\nyour journey? (" + ANSICodeManager.buildRedText("Yes") + "/No)"
+                                                        +
                                                         "\n\nPress enter to continue",
                                         meanY, meanX);
                         anwser = "";
@@ -91,10 +93,8 @@ public class GameRun {
                         msgCenterScreen.clean();
 
                         if (anwser.equalsIgnoreCase("no")) {
-
-                                msgCenterScreen = DisplayManager.messageBox(
-                                                "\033[31mGAME OVER\n\n\nYou've being deported to " + hero.getCountry()
-                                                                + "\033[0m",
+                                
+                                msgCenterScreen = DisplayManager.messageBox(ANSICodeManager.buildRedText( "GAME OVER!!!\n\n\nYou've being deported to " + hero.getCountry()),
                                                 meanY, meanX);
 
                         } else {
@@ -298,16 +298,19 @@ public class GameRun {
                                                                 int demage = monster.decreaseLife(totalAttack);
 
                                                                 msgCenterScreen = DisplayManager.messageBox(
-                                                                                "Your dice roll adds  \033[31m"
-                                                                                                + String.valueOf(
-                                                                                                                diceValue)
-                                                                                                + "\033[0m  to your attack, \ntotaling \033[31m"
-                                                                                                + String.valueOf(
-                                                                                                                totalAttack)
-                                                                                                + "\033[0m." +
-                                                                                                "\nYour attack breaks through,\n dealing  \033[31m "
-                                                                                                + String.valueOf(demage)
-                                                                                                + " \033[0m damage to "
+                                                                                "Your dice roll adds "
+                                                                                                + ANSICodeManager
+                                                                                                                .buildRedText(
+                                                                                                                                diceValue)
+                                                                                                + " to your attack, \ntotaling "
+                                                                                                + ANSICodeManager
+                                                                                                                .buildRedText(
+                                                                                                                                totalAttack)
+                                                                                                + "." +
+                                                                                                "\nYour attack breaks through,\n dealing  "
+                                                                                                + ANSICodeManager
+                                                                                                                .buildRedText(demage)
+                                                                                                + " damage to "
                                                                                                 + monster.getCharacterName()
                                                                                                 +
                                                                                                 "\n\nPress enter to continue",
@@ -323,17 +326,20 @@ public class GameRun {
 
                                                                 msgCenterScreen = DisplayManager.messageBox(
                                                                                 monster.getCharacterName()
-                                                                                                + " roll adds \033[31m"
-                                                                                                + String.valueOf(
-                                                                                                                diceValue)
-                                                                                                + "\033[0m to your attack, \ntotaling \033[31m"
-                                                                                                + String.valueOf(
-                                                                                                                totalAttack)
-                                                                                                + "\033[0m.\n"
+                                                                                                + " roll adds "
+                                                                                                + ANSICodeManager
+                                                                                                                .buildRedText(
+                                                                                                                                diceValue)
+                                                                                                + " to your attack, \ntotaling "
+                                                                                                + ANSICodeManager
+                                                                                                                .buildRedText(
+                                                                                                                                totalAttack)
+                                                                                                + ".\n"
                                                                                                 +
-                                                                                                "Your attack breaks through,\n dealing  \033[31m"
-                                                                                                + String.valueOf(demage)
-                                                                                                + "\033[0m damage to "
+                                                                                                "Your attack breaks through,\n dealing  "
+                                                                                                + ANSICodeManager
+                                                                                                                .buildRedText(demage)
+                                                                                                + " damage to "
                                                                                                 + mainCharacter.getCharacterName()
                                                                                                 +
                                                                                                 "\n\nPress enter to continue",
@@ -414,7 +420,9 @@ public class GameRun {
                                                                                 "\n\nIt's GAME OVER." +
                                                                                 "\n\n But don't lose hope; every path has its setbacks."
                                                                                 +
-                                                                                "\n\n Would you like to try again? (Yes/\033[4;31mNo\033[0m)",
+                                                                                "\n\n Would you like to try again? (Yes/"
+                                                                                + ANSICodeManager.buildRedText("No")
+                                                                                + ")",
                                                                 20,
                                                                 (DisplayManager.width / 2) - 40);
                                                 anwser = "";

@@ -1,7 +1,10 @@
 /**
- * Guide to thhe ANSI Code https://gist.github.com/fnky/458719343aabd01cfb17a3a4f7296797 used to develop this class
+ * Guide to thhe ANSI Code
+ * https://gist.github.com/fnky/458719343aabd01cfb17a3a4f7296797 used to develop
+ * this class
  * 
  * This class translate all the ANSI code to a Java form
+ * 
  * @author shabnam, geraldo, henrique, angelo
  */
 public class ANSICodeManager {
@@ -16,7 +19,7 @@ public class ANSICodeManager {
     public static void printOneSpace() {
         System.out.printf(" ");// cursor 0x0
     }
-    
+
     public static void setCursorToHomePosition() {
         System.out.printf("%c[H", ANSICodeManager.escCode);// cursor 0x0
     }
@@ -31,32 +34,46 @@ public class ANSICodeManager {
     }
 
     public static void enableCursorIndicator() {
-        System.out.printf("%c[?25h", ANSICodeManager.escCode);// disable cursor
+        System.out.printf("%c[?25h", ANSICodeManager.escCode);// enable cursor
     }
 
     public static void resetAllStyleAndColorMode() {
-        System.out.printf("%c[0m", ANSICodeManager.escCode);// disable cursor
+        System.out.printf("%c[0m", ANSICodeManager.escCode);
 
     }
 
     public static void writeRedText(String text) {
-        System.out.printf("%c[31m%s", ANSICodeManager.escCode, text);// disable cursor
+        System.out.printf("%c[31m%s", ANSICodeManager.escCode, text);
         ANSICodeManager.resetAllStyleAndColorMode();
     }
 
+    public static String buildRedText(int text) {
+        return buildRedText(String.valueOf(text));
+    }
+    public static String buildRedText(String text) {
+        StringBuilder builder = new StringBuilder();
+        builder.append(ANSICodeManager.escCode);
+        builder.append("[31m");
+        builder.append(text);
+        builder.append(ANSICodeManager.escCode);
+        builder.append("[0m");
+       
+        return builder.toString();
+    }
+
     public static void setCustomCursorPosition(int x, int y) {
-        System.out.printf("%c[%d;%dH", ANSICodeManager.escCode, y, x);// disable cursor
+        System.out.printf("%c[%d;%dH", ANSICodeManager.escCode, y, x);
     }
 
     public static void set256TextColor(int colorIndex) {
-        System.out.printf("%c[38;5;%dm", ANSICodeManager.escCode, colorIndex);// disable cursor
+        System.out.printf("%c[38;5;%dm", ANSICodeManager.escCode, colorIndex);
     }
 
     public static void set256TextBackGroundColor(int colorIndex) {
-        System.out.printf("%c[48;5;%dm", ANSICodeManager.escCode, colorIndex);// disable cursor
+        System.out.printf("%c[48;5;%dm", ANSICodeManager.escCode, colorIndex);
     }
 
     public static void setRGBTextBackGroundColor(int r, int g, int b) {
-        System.out.printf("%c[48;2;%d;%d;%dm", ANSICodeManager.escCode, r, g, b);// disable cursor
+        System.out.printf("%c[48;2;%d;%d;%dm", ANSICodeManager.escCode, r, g, b);
     }
 }

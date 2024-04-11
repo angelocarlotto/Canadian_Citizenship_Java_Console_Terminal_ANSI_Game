@@ -32,7 +32,6 @@ public class DisplayManager {
 
 
 
-
     public static void print(String msg, int timesEmptySpace) {
         print(msg, timesEmptySpace, false);
     }
