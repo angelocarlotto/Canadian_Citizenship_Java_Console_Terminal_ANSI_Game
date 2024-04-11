@@ -26,22 +26,22 @@ Great, [Character Name]! Here are your starting attributes:
 
 ## Main Character
 
-<imt srg="images/hero1_1.png"/>
+<img srg="images/hero1_1.png"  width="25" />
 
 ## CIC Wolf
 
-<imt srg="./images/monster1_1.png"/>
+<img srg="./images/monster1_1.png"  width="25" />
 
 ## IRCC Immigration
 
 
-<imt srg="./images/monster2_1.png"/>
+<img srg="./images/monster2_1.png"  width="25" />
 
 ## Big Headed from College
 
 
-<imt srg="./images/monster3_1.png"/>
+<img srg="./images/monster3_1.png"  width="25" />
 
 ## Final Boss - Canadian Citzenship
 
-<imt srg="./images/monster4_1.png"/>
+<img srg="./images/monster4_1.png"  width="25" />
