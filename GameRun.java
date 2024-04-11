@@ -80,9 +80,10 @@ public class GameRun {
                                         "With courage and strategy, you'll navigate through the trials ahead." +
                                                         "\nAre you ready to start" +
                                                         "\nyour journey? (\033[4;31mYes\033[0m/No)" +
-                                                        "\n\nEnter o to chose a recovery item",
+                                                        "\n\nPress enter to continue",
                                         meanY, meanX);
-                        scanner.nextLine();
+                        anwser = "";
+                        anwser = scanner.nextLine();
                         msgCenterScreen.clean();
 
                         if (anwser.equalsIgnoreCase("no")) {
