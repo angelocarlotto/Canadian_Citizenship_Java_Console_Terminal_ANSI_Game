@@ -418,6 +418,16 @@ public class GameRun {
                                                                                         "\n\nPress Enter to continue....",
                                                                         20,
                                                                         (DisplayManager.width / 2) - 40, true);
+
+                                                        // always the main character will be the firt to play on every
+                                                        // turn
+                                                        timeToMainCharacterPlay = true;
+
+                                                        // increase the level
+                                                        levelCounter++;
+
+                                                        scanner.nextLine();
+                                                        msgCenterScreen.clean();
                                                 } else {
                                                         // ===================PLAYER WON LEVEL 4===================
                                                         msgCenterScreen = DisplayManager.messageBox(
@@ -437,20 +447,54 @@ public class GameRun {
                                                                                         "\ncourage."
                                                                                         +
                                                                                         "\n\nCongratulations! Welcome to your new home."
-                                                                                        +
-                                                                                        "\n\nPress Enter to continue....",
+                                                                                        + "\n\nPress Enter to continue....",
                                                                         20,
                                                                         (DisplayManager.width / 2) - 40, true);
+
+                                                        scanner.nextLine();
+                                                        msgCenterScreen.clean();
+
+                                                        msgCenterScreen = DisplayManager.messageBox(
+                                                                        "Would you like to try again? (Yes/"
+                                                                                        + ANSICodeManager.buildRedText(
+                                                                                                        "No")
+                                                                                        + ")"
+                                                                                        + "\n\nPress Enter to continue....",
+                                                                        20,
+                                                                        (DisplayManager.width / 2) - 40);
+
+                                                        anwser = "";
+                                                        anwser += scanner.nextLine();
+                                                        msgCenterScreen.clean();
+
+                                                        if (anwser.equalsIgnoreCase("yes")) {
+                                                                // reset levelCounter to first level, level 0
+                                                                levelCounter = 0;
+                                                                timeToMainCharacterPlay = true;
+                                                                // reset recovery items
+                                                                recoveryItemUsed = new boolean[] { false, false,
+                                                                                false };
+
+                                                                // reset life of all characters
+                                                                mainCharacter.setCharacterLife(
+                                                                                GameCharacter.defaultAmontOfLife);
+                                                                for (GameCharacter character : GameRun.monstersSlashLevels) {
+                                                                        character.setCharacterLife(
+                                                                                        GameCharacter.defaultAmontOfLife);
+                                                                }
+                                                        } else {
+                                                                // always the main character will be the firt to play on
+                                                                // every turn
+                                                                timeToMainCharacterPlay = true;
+
+                                                                // increase the level
+                                                                levelCounter++;
+
+                                                                scanner.nextLine();
+                                                                msgCenterScreen.clean();
+                                                        }
+
                                                 }
-
-                                                // always the main character will be the firt to play on every turn
-                                                timeToMainCharacterPlay = true;
-
-                                                // increase the level
-                                                levelCounter++;
-
-                                                scanner.nextLine();
-                                                msgCenterScreen.clean();
 
                                         }
                                         // if the mosnter loses it goes to another turn on the next level.
@@ -461,11 +505,20 @@ public class GameRun {
                                                                                 "\n\nIt's GAME OVER." +
                                                                                 "\n\n But don't lose hope; every path has its setbacks."
                                                                                 +
-                                                                                "\n\n Would you like to try again? (Yes/"
-                                                                                + ANSICodeManager.buildRedText("No")
-                                                                                + ")",
+                                                                                "\n\nPress Enter to continue....",
                                                                 20,
                                                                 (DisplayManager.width / 2) - 40);
+                                                scanner.nextLine();
+                                                msgCenterScreen.clean();
+
+                                                msgCenterScreen = DisplayManager.messageBox(
+                                                                "Would you like to try again? (Yes/"
+                                                                                + ANSICodeManager.buildRedText("No")
+                                                                                + ")"
+                                                                                + "\n\nPress Enter to continue....",
+                                                                20,
+                                                                (DisplayManager.width / 2) - 40);
+
                                                 anwser = "";
                                                 anwser += scanner.nextLine();
                                                 msgCenterScreen.clean();
@@ -473,7 +526,7 @@ public class GameRun {
                                                 if (anwser.equalsIgnoreCase("yes")) {
                                                         // reset levelCounter to first level, level 0
                                                         levelCounter = 0;
-
+                                                        timeToMainCharacterPlay = true;
                                                         // reset recovery items
                                                         recoveryItemUsed = new boolean[] { false, false, false };
 
@@ -488,6 +541,20 @@ public class GameRun {
                                         }
                                 }
                         }
+
+                        ANSICodeManager.cleanWholeTerminal();
+                        msgCenterScreen = DisplayManager.messageBox(
+                                        "\"Do your best, in the condition you have, while you don't have better conditions to do even better!\""
+                                                        + "\n by Mário Sérgio Cortella"
+                                                        + "\n\nProfessor:"
+                                                        + "\n     Nadine Bakri"
+                                                        + "\n\nGroup Members:"
+                                                        + "\n     Shabnam Iskandarova"
+                                                        + "\n     Henrique Goncalves"
+                                                        + "\n     Geraldo Beiro Neto"
+                                                        + "\n     Angelo Carlotto",
+                                        20,
+                                        (DisplayManager.width / 2) - 40, true);
 
                         while (true) {
                                 try {
