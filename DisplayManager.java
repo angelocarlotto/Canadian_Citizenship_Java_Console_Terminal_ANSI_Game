@@ -110,7 +110,9 @@ public class DisplayManager {
                         msgCenterScreen = messageBox(
                                         "Great, " + mainCharacter.getCharacterName()
                                                         + "! Here are your starting attribsutes:" +
-                                                        "\n - Life Points:[100] (These will keep you alive in battles)"
+                                                        "\n - Life Points:["
+                                                        + String.valueOf(GameCharacter.defaultAmontOfLife)
+                                                        + "] (These will keep you alive in battles)"
                                                         +
                                                         "\n - Attack: [10] (Your standard attack strength)" +
                                                         "\n - Defense: [8] (Your ability to resist attacks)" +
@@ -481,7 +483,8 @@ public class DisplayManager {
                                                         scanner.nextLine();
                                                         msgCenterScreen.clean();
 
-                                                        // ==================ASKING IF THE PLKAYER WANTS TO PLAY AGAIN IN CASE WINNING===================
+                                                        // ==================ASKING IF THE PLKAYER WANTS TO PLAY AGAIN
+                                                        // IN CASE WINNING===================
                                                         msgCenterScreen = messageBox(
                                                                         "Would you like to PLAY again? (Yes/"
                                                                                         + ansiCodeManager.buildRedText(
@@ -539,8 +542,8 @@ public class DisplayManager {
                                                 scanner.nextLine();
                                                 msgCenterScreen.clean();
 
-
-                                                // ==================ASKING IF THE PLKAYER WANTS TO PLAY AGAIN IN CASE LOSING===================
+                                                // ==================ASKING IF THE PLKAYER WANTS TO PLAY AGAIN IN CASE
+                                                // LOSING===================
                                                 msgCenterScreen = messageBox(
                                                                 "Would you like to PLAY again? (Yes/"
                                                                                 + ansiCodeManager.buildRedText("No")
