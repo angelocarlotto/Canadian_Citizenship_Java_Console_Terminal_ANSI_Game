@@ -4,7 +4,6 @@
  *  @author Angelo Carlotto, Geraldo Beiro, Henrique, Shabnam.  
  */
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.util.Random;
 
 public class GameCharacter {
@@ -35,7 +34,9 @@ public class GameCharacter {
     private String fileName2;
     private String fileName3Defeated;
     private String fileName4Won;
+    private DisplayManager displayManager = new DisplayManager();
 
+    private ANSICodeManager ansiCodeManager = new ANSICodeManager();
     /**
      * this array 3x3 will hold the first image of the character
      */
@@ -89,7 +90,7 @@ public class GameCharacter {
     }
 
     public String getCharacterName() {
-        return ANSICodeManager.buildRedText(characterName);
+        return ansiCodeManager.buildRedText(characterName);
     }
 
     public void setCharacterName(String characterName) {
@@ -137,7 +138,7 @@ public class GameCharacter {
     /**
      * This method decrease the character's life based on the oponent attack
      * 
-     * @param attacke 
+     * @param attacke
      * @return returns the ammount of life lose
      */
     public int decreaseLife(int attacke) {
@@ -155,9 +156,9 @@ public class GameCharacter {
      */
     public void drawCharacter1OnTheScreen(int[][][] randomArray) {
 
-        DisplayManager.printCharacter_RGB(randomArray, initY, initX);
+        displayManager.printCharacter_RGB(randomArray, initY, initX);
         this.characterLife = this.characterLife > 0 ? this.characterLife : 0;
-        ANSICodeManager.printAtPosition(
+        ansiCodeManager.printAtPosition(
                 getCharacterName() + ":(" + String.valueOf(characterLife) + ")" + "#".repeat(this.characterLife / 10),
                 initX, initY);
     }
@@ -183,7 +184,7 @@ public class GameCharacter {
      * this method clean the screen exactly on the previous reaginon it was draw
      */
     public void eraseCharacterFromScreen() {
-        DisplayManager.cleanArea_RGB(40, 25, initY, initX);
+        displayManager.cleanArea_RGB(40, 25, initY, initX);
     }
 
     /**

@@ -35,7 +35,7 @@ public class MessageBox {
     private static Random random = new Random();
     private int paddingLeftOrRight = 3;
     private int paddintTopOrBotton = 2;
-
+    ANSICodeManager ansiCodeManager=new ANSICodeManager();
     public MessageBox(int x, int y, int height, String message) {
         this.positionX = x;
         this.positionY = y;
@@ -79,12 +79,12 @@ public class MessageBox {
         }
 
         int legnthBorderTopAndButton = maxLength + paddingLeftOrRight * 2;
-        ANSICodeManager.set256TextBackGroundColor(40);
+        ansiCodeManager.set256TextBackGroundColor(40);
         height += msgsLines.length;
         for (int iy = positionY; iy <= height + positionY; iy++) {
             for (int ix = positionX; ix <= legnthBorderTopAndButton + positionX; ix++) {
-                ANSICodeManager.setCustomCursorPosition(ix, iy);
-                ANSICodeManager.printOneSpaceWithDefaultBackGroundColor();
+                ansiCodeManager.setCustomCursorPosition(ix, iy);
+                ansiCodeManager.printOneSpaceWithDefaultBackGroundColor();
             }
         }
     }
@@ -97,7 +97,7 @@ public class MessageBox {
      */
     public void draw(boolean withDelay) {
 
-        ANSICodeManager.resetAllStyleAndColorMode();
+        ansiCodeManager.resetAllStyleAndColorMode();
 
         String textWithoutANSI = getStringWithOutANSIScapeCode();
 
@@ -118,29 +118,29 @@ public class MessageBox {
         // draw borders top and button of the box
         height += msgsLines.length;
         for (int i = positionX; i < legnthBorderTopAndButton + positionX; i++) {
-            ANSICodeManager.setCustomCursorPosition(i, positionY);
-            ANSICodeManager.printOneSpace();
+            ansiCodeManager.setCustomCursorPosition(i, positionY);
+            ansiCodeManager.printOneSpace();
 
-            ANSICodeManager.setCustomCursorPosition(i, positionY + height);
-            ANSICodeManager.printOneSpace();
+            ansiCodeManager.setCustomCursorPosition(i, positionY + height);
+            ansiCodeManager.printOneSpace();
         }
 
         for (int i = positionY; i <= height + positionY; i++) {
 
             // draw border left of the box
-            ANSICodeManager.setCustomCursorPosition(positionX, i);
-            ANSICodeManager.printOneSpace();
+            ansiCodeManager.setCustomCursorPosition(positionX, i);
+            ansiCodeManager.printOneSpace();
 
             // draw border right of the box
-            ANSICodeManager.setCustomCursorPosition(positionX + legnthBorderTopAndButton, i);
-            ANSICodeManager.printOneSpace();
+            ansiCodeManager.setCustomCursorPosition(positionX + legnthBorderTopAndButton, i);
+            ansiCodeManager.printOneSpace();
         }
 
-        ANSICodeManager.resetAllStyleAndColorMode();
+        ansiCodeManager.resetAllStyleAndColorMode();
         if (withDelay) {
             for (int l = 0; l < msgsLines.length; l++) {
 
-                ANSICodeManager.setCustomCursorPosition(positionX + paddingLeftOrRight, positionY + paddintTopOrBotton + l);
+                ansiCodeManager.setCustomCursorPosition(positionX + paddingLeftOrRight, positionY + paddintTopOrBotton + l);
 
                 for (int i = 0; i < msgsLines[l].length(); i++) {
 
@@ -155,12 +155,12 @@ public class MessageBox {
         } else {
             for (int l = 0; l < msgsLines.length; l++) {
 
-                ANSICodeManager.setCustomCursorPosition(positionX + paddingLeftOrRight, positionY + paddintTopOrBotton + l);
-                ANSICodeManager.print(msgsLines[l]);
+                ansiCodeManager.setCustomCursorPosition(positionX + paddingLeftOrRight, positionY + paddintTopOrBotton + l);
+                ansiCodeManager.print(msgsLines[l]);
             }
         }
-        ANSICodeManager.setCustomCursorPosition(positionX + paddingLeftOrRight, positionY + paddintTopOrBotton + msgsLines.length);
-        ANSICodeManager.resetAllStyleAndColorMode();
+        ansiCodeManager.setCustomCursorPosition(positionX + paddingLeftOrRight, positionY + paddintTopOrBotton + msgsLines.length);
+        ansiCodeManager.resetAllStyleAndColorMode();
 
     }
 
