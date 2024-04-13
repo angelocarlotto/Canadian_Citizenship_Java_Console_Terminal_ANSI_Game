@@ -13,8 +13,12 @@ This game was developed as the final project of the Fundamental Programin at fir
 In this journey, you'll face 4 challenges, proving your worth to become a Canadian citizen. But first, let's create your character.
 
 Please enter your character's name: [User inputs name]
+<br/>
 Please enter your nationality: [User inputs nationality]
+<br/>
+<br/>
 Great, [Character Name]! Here are your starting attributes:
+<br/>
 - Life Points:[100] (These will keep you alive in battles)
 - Attack: [10] (Your standard attack strength)
 - Defense: [8] (Your ability to resist attacks)
