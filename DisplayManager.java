@@ -24,6 +24,10 @@ public class DisplayManager {
         private GameCharacter mosnter3 = null;
         private GameCharacter mosnter4 = null;
 
+        private int levelCounter = 0;
+
+        private boolean timeToMainCharacterPlay = true;
+
         /**
          * this array will hold all the mosnters. Also will help the code understand how
          * many levels there is on the game
@@ -152,9 +156,7 @@ public class DisplayManager {
                                 // =================THE GAME WILL BEGING PART 1=====================
                                 // GameCharacter mainCharacter = GameRun.hero;
                                 GameCharacter monster;
-                                int levelCounter = 0;
 
-                                boolean timeToMainCharacterPlay = true;
                                 int heroPositionY = DisplayManager.height - 40;
                                 int heroPositionX = 30;
                                 int monsterPositionY = 10;
@@ -494,26 +496,7 @@ public class DisplayManager {
                                                                         20,
                                                                         (DisplayManager.width / 2) - 40);
 
-                                                        anwser = "";
-                                                        anwser += scanner.nextLine();
-                                                        msgCenterScreen.clean();
-
-                                                        if (anwser.equalsIgnoreCase("yes")) {
-                                                                // reset levelCounter to first level, level 0
-                                                                levelCounter = 0;
-                                                                timeToMainCharacterPlay = true;
-                                                                // reset recovery items
-                                                                recoveryItemUsed = new boolean[] { false, false,
-                                                                                false };
-
-                                                                // reset life of all characters
-                                                                mainCharacter.setCharacterLife(
-                                                                                GameCharacter.defaultAmontOfLife);
-                                                                for (GameCharacter character : monstersSlashLevels) {
-                                                                        character.setCharacterLife(
-                                                                                        GameCharacter.defaultAmontOfLife);
-                                                                }
-                                                        } else {
+                                                        if (!askIfWantPlayAgain()) {
                                                                 // always the main character will be the firt to play on
                                                                 // every turn
                                                                 timeToMainCharacterPlay = true;
@@ -544,33 +527,7 @@ public class DisplayManager {
 
                                                 // ==================ASKING IF THE PLKAYER WANTS TO PLAY AGAIN IN CASE
                                                 // LOSING===================
-                                                msgCenterScreen = messageBox(
-                                                                "Would you like to PLAY again? (Yes/"
-                                                                                + ansiCodeManager.buildRedText("No")
-                                                                                + ")"
-                                                                                + "\n\nPress Enter to continue....",
-                                                                20,
-                                                                (DisplayManager.width / 2) - 40);
-
-                                                anwser = "";
-                                                anwser += scanner.nextLine();
-                                                msgCenterScreen.clean();
-
-                                                if (anwser.equalsIgnoreCase("yes")) {
-                                                        // reset levelCounter to first level, level 0
-                                                        levelCounter = 0;
-                                                        timeToMainCharacterPlay = true;
-                                                        // reset recovery items
-                                                        recoveryItemUsed = new boolean[] { false, false, false };
-
-                                                        // reset life of all characters
-                                                        mainCharacter.setCharacterLife(
-                                                                        GameCharacter.defaultAmontOfLife);
-                                                        for (GameCharacter character : monstersSlashLevels) {
-                                                                character.setCharacterLife(
-                                                                                GameCharacter.defaultAmontOfLife);
-                                                        }
-                                                }
+                                                askIfWantPlayAgain();
                                         }
                                 }
                         }
@@ -603,6 +560,39 @@ public class DisplayManager {
                         throw x;
                 }
 
+        }
+
+        private boolean askIfWantPlayAgain() {
+
+                MessageBox msgCenterScreen = messageBox(
+                                "Would you like to PLAY again? (Yes/"
+                                                + ansiCodeManager.buildRedText("No")
+                                                + ")"
+                                                + "\n\nPress Enter to continue....",
+                                20,
+                                (DisplayManager.width / 2) - 40);
+
+                String anwser = "";
+                anwser += scanner.nextLine();
+                msgCenterScreen.clean();
+                boolean isItYEs = anwser.equalsIgnoreCase("yes");
+                if (anwser.equalsIgnoreCase("yes")) {
+                        // reset levelCounter to first level, level 0
+                        levelCounter = 0;
+                        timeToMainCharacterPlay = true;
+                        // reset recovery items
+                        recoveryItemUsed = new boolean[] { false, false, false };
+
+                        // reset life of all characters
+                        mainCharacter.setCharacterLife(
+                                        GameCharacter.defaultAmontOfLife);
+                        for (GameCharacter character : monstersSlashLevels) {
+                                character.setCharacterLife(
+                                                GameCharacter.defaultAmontOfLife);
+                        }
+                }
+
+                return isItYEs;
         }
 
         /**
