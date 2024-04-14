@@ -6,8 +6,7 @@ import java.util.Scanner;
  * @author shabnam, geraldo, henrique, angelo
  */
 public class GameRun {
-        private  static Scanner scanner = new Scanner(System.in);
-        private static DisplayManager displayManager = new DisplayManager(60, 200, scanner);
+        private static DisplayManager displayManager = new DisplayManager(60, 200);
 
         /**
          * @param args

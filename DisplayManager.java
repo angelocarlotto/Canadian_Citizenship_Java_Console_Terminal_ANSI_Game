@@ -49,10 +49,10 @@ public class DisplayManager {
         private ANSICodeManager ansiCodeManager = new ANSICodeManager();
 
 
-        public DisplayManager(int height, int width, Scanner scanner) {
+        public DisplayManager(int height, int width) {
                 DisplayManager.height = height;
                 DisplayManager.width = width;
-                this.scanner = scanner;
+                this.scanner = new Scanner(System.in);
 
                 this.mainCharacter = new GameCharacter("hero1_hero_frame1_RGB.txt", "hero1_hero_frame2_RGB.txt",
                                 "hero1_hero_frame3_RGB.txt", "hero1_hero_frame4_RGB.txt");
