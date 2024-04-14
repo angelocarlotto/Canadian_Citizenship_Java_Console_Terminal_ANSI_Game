@@ -48,8 +48,6 @@ public class DisplayManager {
 
         private ANSICodeManager ansiCodeManager = new ANSICodeManager();
 
-        public DisplayManager() {
-        }
 
         public DisplayManager(int height, int width, Scanner scanner) {
                 DisplayManager.height = height;
