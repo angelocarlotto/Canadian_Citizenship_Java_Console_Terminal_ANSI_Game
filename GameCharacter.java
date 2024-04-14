@@ -34,7 +34,6 @@ public class GameCharacter {
     private String fileName2;
     private String fileName3Defeated;
     private String fileName4Won;
-    private DisplayManager displayManager = new DisplayManager();
 
     private ANSICodeManager ansiCodeManager = new ANSICodeManager();
     /**
@@ -156,11 +155,62 @@ public class GameCharacter {
      */
     public void drawCharacter1OnTheScreen(int[][][] randomArray) {
 
-        displayManager.printCharacter_RGB(randomArray, initY, initX);
+        printCharacter_RGB(randomArray, initY, initX);
         this.characterLife = this.characterLife > 0 ? this.characterLife : 0;
         ansiCodeManager.printAtPosition(
                 getCharacterName() + ":(" + String.valueOf(characterLife) + ")" + "#".repeat(this.characterLife / 10),
                 initX, initY);
+    }
+
+     /**
+         * This method helps to print the image stored on a 3x3 array on the
+         * screen/terminal
+         * 
+         * @param arrayCharacter40x25
+         * @param startPostY
+         * @param startPosX
+         */
+        public void printCharacter_RGB(int[][][] arrayCharacter40x25, int startPostY, int startPosX) {
+            int postY = startPostY;
+            int postX = startPosX;
+            for (int row = 0; row < arrayCharacter40x25.length; row++) {
+                    ansiCodeManager.setCustomCursorPosition(postX, postY + row);
+                    for (int col = 0; col < arrayCharacter40x25[0].length; col++) {
+                            if (arrayCharacter40x25[row][col][3] == 0) {
+                                    ansiCodeManager.printOneSpaceWithDefaultBackGroundColor();
+                            } else {
+                                    ansiCodeManager.setRGBTextBackGroundColor(arrayCharacter40x25[row][col][0],
+                                                    arrayCharacter40x25[row][col][1],
+                                                    arrayCharacter40x25[row][col][2]);
+                                    ansiCodeManager.printOneSpace();
+                            }
+                    }
+                    System.out.println();
+            }
+
+    }
+
+    /**
+     * this method helps clean the region previous used to draw something opn the
+     * terminal/screen
+     * 
+     * @param height
+     * @param width
+     * @param startPostY
+     * @param startPosX
+     */
+    public void cleanArea_RGB(int height, int width, int startPostY, int startPosX) {
+            int postY = startPostY;
+            int postX = startPosX;
+            for (int row = 0; row < height; row++) {
+
+                    ansiCodeManager.setCustomCursorPosition(postX, postY + row);
+                    for (int col = 0; col < width; col++) {
+                            ansiCodeManager.printOneSpaceWithDefaultBackGroundColor();
+                    }
+                    System.out.println();
+            }
+
     }
 
     /**
@@ -184,7 +234,7 @@ public class GameCharacter {
      * this method clean the screen exactly on the previous reaginon it was draw
      */
     public void eraseCharacterFromScreen() {
-        displayManager.cleanArea_RGB(40, 25, initY, initX);
+        cleanArea_RGB(40, 25, initY, initX);
     }
 
     /**
